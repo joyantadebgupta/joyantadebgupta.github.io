@@ -57,32 +57,43 @@ const contactForm = document.getElementById('contactForm');
 let lastSubmissionTime = 0;
 const RATE_LIMIT_SECONDS = 30; // 30 seconds between submissions
 
+// Simplified form validation and submission
+function validateForm(form) {
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('invalid');
+            showError(field, 'This field is required');
+        } else {
+            field.classList.remove('invalid');
+            hideError(field);
+        }
+    });
+
+    // Basic phone validation
+    const phone = form.querySelector('#phone');
+    if (phone && phone.value) {
+        const phoneRegex = /^[+]?[0-9]{8,}$/;
+        if (!phoneRegex.test(phone.value)) {
+            isValid = false;
+            phone.classList.add('invalid');
+            showError(phone, 'Please enter a valid phone number');
+        }
+    }
+
+    return isValid;
+}
+
+// Form submission handler
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Rate limiting
-        const currentTime = Date.now();
-        if (currentTime - lastSubmissionTime < RATE_LIMIT_SECONDS * 1000) {
-            alert('Please wait before submitting again.');
+        if (!validateForm(this)) {
             return;
-        }
-
-        // Mobile-specific form validation
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-
-        if (!name || !email || !message) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        // Input sanitization
-        const sanitizedData = {};
-        for (let [key, value] of formData.entries()) {
-            sanitizedData[key] = sanitizeInput(value);
         }
 
         const submitBtn = this.querySelector('button[type="submit"]');
@@ -90,25 +101,53 @@ if (contactForm) {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
         try {
-            await fetch(this.action, {
+            const formData = new FormData(this);
+            const response = await fetch(this.action, {
                 method: 'POST',
-                body: new URLSearchParams(sanitizedData),
+                body: formData,
                 headers: {
                     'Accept': 'application/json'
                 }
             });
             
-            alert('Message sent successfully!');
-            this.reset();
-            lastSubmissionTime = currentTime;
+            if (response.ok) {
+                alert('Message sent successfully!');
+                this.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
         } catch (error) {
             console.error('Error:', error);
-            alert('There was a problem sending your message. Please try again later.');
+            alert('Failed to send message. Please try again.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Send Message';
         }
     });
+}
+
+function showError(field, message) {
+    const errorDiv = field.parentElement.querySelector('.error-message') || 
+                    createErrorElement(field);
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+}
+
+function hideError(field) {
+    const errorDiv = field.parentElement.querySelector('.error-message');
+    if (errorDiv) {
+        errorDiv.style.display = 'none';
+    }
+}
+
+function createErrorElement(field) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.color = 'red';
+    errorDiv.style.fontSize = '12px';
+    errorDiv.style.marginTop = '5px';
+    field.parentElement.appendChild(errorDiv);
+    return errorDiv;
 }
 
 // Input sanitization function
@@ -226,80 +265,6 @@ function initializeTouchEvents() {
 
 // Initialize touch events
 window.addEventListener('DOMContentLoaded', initializeTouchEvents);
-
-// Mobile-friendly form validation
-let recaptchaComplete = false;
-
-function onRecaptchaSuccess() {
-    recaptchaComplete = true;
-    document.querySelector('.recaptcha-error').style.display = 'none';
-}
-
-function onRecaptchaExpired() {
-    recaptchaComplete = false;
-}
-
-function validateForm(form) {
-    // Phone validation - accept any valid phone number
-    const phone = form.querySelector('#phone');
-    if (phone.value) {
-        const phoneRegex = /^[+]?[0-9]{8,}$/;
-        if (!phoneRegex.test(phone.value)) {
-            alert('Please enter a valid phone number');
-            return false;
-        }
-    }
-
-    // Message validation
-    const message = form.querySelector('#message');
-    if (message.value.length < 10) {
-        alert('Message must be at least 10 characters long');
-        return false;
-    }
-
-    // reCAPTCHA validation
-    if (!recaptchaComplete) {
-        document.querySelector('.recaptcha-error').style.display = 'block';
-        return false;
-    }
-
-    return true;
-}
-
-function showInputError(input) {
-    const errorDiv = input.parentElement.querySelector('.error-message') || 
-                    createErrorElement(input);
-    errorDiv.textContent = input.title || 'This field is required';
-}
-
-function hideInputError(input) {
-    const errorDiv = input.parentElement.querySelector('.error-message');
-    if (errorDiv) errorDiv.remove();
-}
-
-function createErrorElement(input) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.style.color = 'red';
-    errorDiv.style.fontSize = '12px';
-    errorDiv.style.marginTop = '5px';
-    input.parentElement.appendChild(errorDiv);
-    return errorDiv;
-}
-
-// Initialize form validation
-window.addEventListener('DOMContentLoaded', () => {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            if (!validateForm(form)) {
-                e.preventDefault();
-                alert('Please fill in all required fields.');
-            }
-        });
-    });
-});
 
 // Error handling for form submissions
 window.addEventListener('error', function(e) {
