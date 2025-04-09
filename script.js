@@ -101,28 +101,31 @@ if (contactForm) {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
         try {
-            // Convert form data to URL-encoded string for Formspree
             const formData = new FormData(this);
-            const response = await fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
             });
-            
-            const responseData = await response.json();
-            
+
+            const response = await fetch("https://formspree.io/f/moqzjgjo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(object)
+            });
+
             if (response.ok) {
                 this.reset();
-                alert('Message sent successfully!');
-                submitBtn.innerHTML = 'Send Message';
+                alert("Message sent successfully!");
             } else {
-                throw new Error(responseData.error || 'Failed to send message');
+                const data = await response.json();
+                throw new Error(data.error || "Failed to send message");
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Failed to send message. Please try again.');
+            console.error("Form Error:", error);
+            alert("Failed to send message. Please try again later.");
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Send Message';
