@@ -240,28 +240,30 @@ function onRecaptchaExpired() {
 }
 
 function validateForm(form) {
-    // Check if reCAPTCHA is completed
+    // Phone validation - accept any valid phone number
+    const phone = form.querySelector('#phone');
+    if (phone.value) {
+        const phoneRegex = /^[+]?[0-9]{8,}$/;
+        if (!phoneRegex.test(phone.value)) {
+            alert('Please enter a valid phone number');
+            return false;
+        }
+    }
+
+    // Message validation
+    const message = form.querySelector('#message');
+    if (message.value.length < 10) {
+        alert('Message must be at least 10 characters long');
+        return false;
+    }
+
+    // reCAPTCHA validation
     if (!recaptchaComplete) {
         document.querySelector('.recaptcha-error').style.display = 'block';
         return false;
     }
 
-    // Validate other form fields
-    const inputs = form.querySelectorAll('input[required], textarea[required]');
-    let isValid = true;
-
-    inputs.forEach(input => {
-        if (!input.value.trim()) {
-            isValid = false;
-            input.classList.add('invalid');
-            showInputError(input);
-        } else {
-            input.classList.remove('invalid');
-            hideInputError(input);
-        }
-    });
-
-    return isValid;
+    return true;
 }
 
 function showInputError(input) {
