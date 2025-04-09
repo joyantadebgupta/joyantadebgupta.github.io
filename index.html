@@ -545,9 +545,9 @@
                                    name="phone" 
                                    class="form-control" 
                                    required
-                                   pattern="[0-9]{10}"
-                                   title="Please enter a valid phone number (10 digits)"
-                                   placeholder="Enter your phone number">
+                                   pattern="^[+]?[0-9]{8,}$"
+                                   title="Please enter a valid phone number (minimum 8 digits)"
+                                   placeholder="Enter phone number (e.g. +8801671801435)">
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
@@ -566,10 +566,12 @@
                                       name="message" 
                                       class="form-control" 
                                       required
-                                      pattern=".{10,500}"
-                                      title="Please enter a message (10-500 characters)"
+                                      minlength="10"
+                                      title="Please enter a message (minimum 10 characters)"
                                       placeholder="Enter your message"></textarea>
                         </div>
+                        <input type="hidden" name="_replyto" value="jadg.power@gmail.com">
+                        <input type="hidden" name="_next" value="https://joyantadebgupta.github.io/#contact">
                         <div class="form-group">
                             <div class="g-recaptcha" 
                                  data-sitekey="6LfUkHIpAAAAAOyw3b83ZK5tN-qH0A_p3BwMp5TJ"
