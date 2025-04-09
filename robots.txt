@@ -1,7 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /private/
-
-Sitemap: https://joyantadeb.com/sitemap.xml
+Sitemap: https://joyantadebgupta.github.io/sitemap.xml
