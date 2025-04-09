@@ -102,33 +102,31 @@ if (contactForm) {
         
         try {
             const formData = new FormData(this);
-            const object = {};
-            formData.forEach((value, key) => {
-                object[key] = value;
-            });
-
             const response = await fetch("https://formspree.io/f/moqzjgjo", {
                 method: "POST",
+                body: formData,
                 headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    'Accept': 'application/json',
+                    'Origin': window.location.origin
                 },
-                body: JSON.stringify(object)
+                mode: 'cors'
             });
-
+            
             if (response.ok) {
                 this.reset();
-                alert("Message sent successfully!");
+                alert("Thank you for your message! I'll get back to you soon.");
+                submitBtn.innerHTML = 'Message Sent!';
+                setTimeout(() => {
+                    submitBtn.innerHTML = 'Send Message';
+                }, 2000);
             } else {
-                const data = await response.json();
-                throw new Error(data.error || "Failed to send message");
+                throw new Error('Failed to send message');
             }
         } catch (error) {
             console.error("Form Error:", error);
-            alert("Failed to send message. Please try again later.");
+            alert("Failed to send message. Please try again or email directly at jadg.power@gmail.com");
         } finally {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Send Message';
         }
     });
 }
