@@ -101,6 +101,7 @@ if (contactForm) {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
         try {
+            // Convert form data to URL-encoded string for Formspree
             const formData = new FormData(this);
             const response = await fetch(this.action, {
                 method: 'POST',
@@ -110,11 +111,14 @@ if (contactForm) {
                 }
             });
             
+            const responseData = await response.json();
+            
             if (response.ok) {
-                alert('Message sent successfully!');
                 this.reset();
+                alert('Message sent successfully!');
+                submitBtn.innerHTML = 'Send Message';
             } else {
-                throw new Error('Failed to send message');
+                throw new Error(responseData.error || 'Failed to send message');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -504,30 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
-
-    // Form Submission
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            
-            // Here you would typically send the form data to your server
-            // For now, we'll just show a success message
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-
-            setTimeout(() => {
-                submitBtn.innerHTML = 'Message Sent!';
-                contactForm.reset();
-                setTimeout(() => {
-                    submitBtn.innerHTML = 'Send Message';
-                    submitBtn.disabled = false;
-                }, 2000);
-            }, 2000);
-        });
-    }
 
     // Add hover effects to skill progress bars
     document.querySelectorAll('.skill-progress').forEach(progress => {
