@@ -228,23 +228,61 @@ function initializeTouchEvents() {
 window.addEventListener('DOMContentLoaded', initializeTouchEvents);
 
 // Mobile-friendly form validation
+let recaptchaComplete = false;
+
+function onRecaptchaSuccess() {
+    recaptchaComplete = true;
+    document.querySelector('.recaptcha-error').style.display = 'none';
+}
+
+function onRecaptchaExpired() {
+    recaptchaComplete = false;
+}
+
 function validateForm(form) {
-    const inputs = form.querySelectorAll('input, textarea');
+    // Check if reCAPTCHA is completed
+    if (!recaptchaComplete) {
+        document.querySelector('.recaptcha-error').style.display = 'block';
+        return false;
+    }
+
+    // Validate other form fields
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
     let isValid = true;
 
     inputs.forEach(input => {
-        if (input.hasAttribute('required') && !input.value.trim()) {
+        if (!input.value.trim()) {
             isValid = false;
             input.classList.add('invalid');
-            const errorMsg = input.getAttribute('title') || 'This field is required';
-            showError(input, errorMsg);
+            showInputError(input);
         } else {
             input.classList.remove('invalid');
-            clearError(input);
+            hideInputError(input);
         }
     });
 
     return isValid;
+}
+
+function showInputError(input) {
+    const errorDiv = input.parentElement.querySelector('.error-message') || 
+                    createErrorElement(input);
+    errorDiv.textContent = input.title || 'This field is required';
+}
+
+function hideInputError(input) {
+    const errorDiv = input.parentElement.querySelector('.error-message');
+    if (errorDiv) errorDiv.remove();
+}
+
+function createErrorElement(input) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.color = 'red';
+    errorDiv.style.fontSize = '12px';
+    errorDiv.style.marginTop = '5px';
+    input.parentElement.appendChild(errorDiv);
+    return errorDiv;
 }
 
 // Initialize form validation
