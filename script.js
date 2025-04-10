@@ -102,7 +102,7 @@ if (contactForm) {
         
         try {
             const formData = new FormData(this);
-            const response = await fetch("https://formspree.io/f/moqzjgjo", {
+            const response = await fetch("https://formspree.io/f/mnnplppz", {
                 method: "POST",
                 body: formData,
                 headers: {
@@ -382,13 +382,10 @@ experienceCards.forEach(card => {
 
 // Add smooth scroll behavior to the window
 window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.style.background = 'linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95))';
-        header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('active');
     } else {
-        header.style.background = 'linear-gradient(135deg, var(--dark), #0f172a)';
-        header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+        backToTopBtn.classList.remove('active');
     }
 });
 
@@ -413,29 +410,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
-    const header = document.querySelector('header');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll <= 0) {
-            header.classList.remove('scrolled');
-            return;
-        }
-
-        if (currentScroll > lastScroll && !header.classList.contains('scrolled')) {
-            // Scroll Down
-            header.classList.add('scrolled');
-        } else if (currentScroll < lastScroll && header.classList.contains('scrolled')) {
-            // Scroll Up
-            header.classList.remove('scrolled');
-        }
-
-        lastScroll = currentScroll;
-    });
-
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -618,5 +592,50 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('visible');
         }, delay);
         delay += 100;
+    });
+});
+
+// Skills Animation
+const skillsSection = document.querySelector('.skills');
+const skillCategories = document.querySelectorAll('.skill-category');
+
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            skillCategories.forEach((category, index) => {
+                setTimeout(() => {
+                    category.classList.add('visible');
+                }, index * 100);
+            });
+            skillsObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+if (skillsSection) {
+    skillsObserver.observe(skillsSection);
+}
+
+// Add scroll reveal animations to skills
+ScrollReveal().reveal('.skill-category', {
+    delay: 100,
+    duration: 600,
+    distance: '50px',
+    origin: 'bottom',
+    interval: 100,
+    reset: false,
+    mobile: true
+});
+
+// Add hover effect to skill icons
+skillCategories.forEach(category => {
+    const icon = category.querySelector('.skill-icon');
+    category.addEventListener('mouseenter', () => {
+        icon.style.transform = 'rotate(360deg)';
+    });
+    category.addEventListener('mouseleave', () => {
+        icon.style.transform = 'rotate(0deg)';
     });
 });
