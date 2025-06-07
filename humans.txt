@@ -1,0 +1,11 @@
+/* TEAM */
+    Developer: Joyanta Deb Gupta
+    Contact: jadg.power@gmail.com
+    LinkedIn: https://www.linkedin.com/in/joyanta-deb-013454134
+    Location: Dhaka, Bangladesh
+
+/* SITE */
+    Last update: 2025/06/06
+    Standards: HTML5, CSS3, JavaScript
+    Components: Tailwind CSS, Font Awesome
+    Software: VS Code, Git
