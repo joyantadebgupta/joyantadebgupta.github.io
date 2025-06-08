@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /private/
-Disallow: /assets/private/
-
-# Crawl-delay: 10
-Sitemap: https://joyantadebgupta.github.io/sitemap.xml
