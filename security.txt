@@ -1,0 +1,7 @@
+Contact: mailto:jadg.power@gmail.com
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en, bn
+Canonical: https://joyantadebgupta.github.io/security.txt
+Policy: https://joyantadebgupta.github.io/security-policy
+Hiring: https://joyantadebgupta.github.io/#contact
+Acknowledgments: https://joyantadebgupta.github.io/security-acknowledgments
