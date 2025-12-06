@@ -1,0 +1,46 @@
+.DS_Store
+node_modules/
+.env
+.vscode/
+*.log
+
+# IDE and Editor files
+.idea/
+*.swp
+*.swo
+*.sublime-*
+.atom/
+.vimrc
+
+# Build and temp files
+dist/
+build/
+temp/
+tmp/
+*.tmp
+*.bak
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Dependency directories
+bower_components/
+jspm_packages/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Cache directories
+.cache/
+.npm/
+.eslintcache

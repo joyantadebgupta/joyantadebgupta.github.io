@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square70x70logo src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg"/>
+            <square150x150logo src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg"/>
+            <square310x310logo src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg"/>
+            <TileColor>#4f46e5</TileColor>
+            <TileImage src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg"/>
+        </tile>
+        <notification>
+            <polling-uri src="https://joyantadebgupta.github.io/"/>
+            <frequency>60</frequency>
+            <cycle>1</cycle>
+        </notification>
+    </msapplication>
+</browserconfig>

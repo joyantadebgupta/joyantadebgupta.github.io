@@ -1,0 +1,23 @@
+/* TEAM */
+    Developer: Joyanta Deb Gupta
+    Role: Senior Electrical Design & Project Engineer
+    Contact: jadg.power@gmail.com
+    LinkedIn: https://www.linkedin.com/in/joyantadeb
+    Facebook: https://www.facebook.com/Jadg.power
+    Location: Mirpur-1, Dhaka, Bangladesh
+
+/* SITE */
+    Last update: 2025/06/07
+    Language: English
+    Standards: HTML5, CSS3, JavaScript
+    Components: Tailwind CSS, Font Awesome, Google Fonts
+    Software: VS Code, Git, GitHub Pages
+    AI Integration: OpenRouter API
+    Form Handler: Formspree
+
+/* TECHNOLOGIES */
+    Hosting: GitHub Pages
+    Version Control: Git
+    SEO: Schema.org, OpenGraph, Twitter Cards
+    PWA Support: Web Manifest, Service Worker
+    Performance: Resource Preloading, Image Optimization

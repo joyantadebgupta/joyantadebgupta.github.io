@@ -1,0 +1,56 @@
+# Enhanced Security Headers
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+Header set X-Frame-Options "DENY"
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Permitted-Cross-Domain-Policies "none"
+Header set Cross-Origin-Embedder-Policy "require-corp"
+Header set Cross-Origin-Opener-Policy "same-origin"
+Header set Cross-Origin-Resource-Policy "same-origin"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://openrouter.ai; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
+
+# Prevent directory browsing
+Options -Indexes
+
+# Redirect www to non-www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.joyantadebgupta\.github\.io [NC]
+RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
+
+# Include cache rules
+Include cache.htaccess
+
+# Security.txt and well-known redirects
+Redirect 301 /.well-known/security.txt /security.txt
+Redirect 301 /.well-known/browserconfig.xml /browserconfig.xml
+
+# Error pages
+ErrorDocument 404 /404.html
+
+# Force trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+
+# Protection against common vulnerabilities
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Enable HTTP/2 if available
+Protocols h2 h2c http/1.1
+
+# Enable server push if using HTTP/2
+<IfModule mod_headers.c>
+    # Add Link headers for critical resources
+    Header add Link "</styles.css>;rel=preload;as=style"
+    Header add Link "</scripts.js>;rel=preload;as=script"
+    Header add Link "https://cdn.tailwindcss.com;rel=preload;as=script"
+    Header add Link "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css;rel=preload;as=style"
+</IfModule>
