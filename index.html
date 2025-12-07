@@ -134,6 +134,7 @@
   <header
     class="fixed top-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between p-4 md:p-5">
+      <!-- Logo -->
       <a href="#home" class="flex items-center gap-2 md:gap-3 transition-transform hover:scale-105 group">
         <img src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg" alt="Joyanta Deb Gupta Logo"
           class="header-profile-img group-hover:shadow-md transition-shadow"
@@ -141,42 +142,53 @@
         <span
           class="font-handwriting header-name font-bold text-indigo-600 group-hover:text-indigo-700 transition-colors whitespace-nowrap">Joyanta</span>
       </a>
-      <div class="flex items-center gap-4">
-        <!-- Dark Mode Toggle -->
-        <button id="theme-toggle"
-          class="p-2 rounded-full text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none transition-colors"
-          aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon text-xl" id="theme-toggle-dark-icon"></i>
-          <i class="fas fa-sun text-xl hidden" id="theme-toggle-light-icon"></i>
-        </button>
 
-        <button id="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false"
-          class="md:hidden text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md p-2 transition-colors">
-          <i class="fas fa-bars text-2xl"></i>
+      <!-- Desktop Navigation + Dark Mode Toggle -->
+      <div class="hidden md:flex items-center gap-6">
+        <nav id="main-nav" class="flex space-x-3 lg:space-x-4 text-xs lg:text-sm font-medium" role="navigation"
+          aria-label="Primary navigation">
+          <a href="#home"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Home</a>
+          <a href="#about"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">About</a>
+          <a href="#projects"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Projects</a>
+          <a href="#experience"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Experience</a>
+          <a href="#education"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Education</a>
+          <a href="#expertise"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Expertise</a>
+          <a href="#trainings"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Trainings</a>
+          <a href="#interests"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Interests</a>
+          <a href="#contact"
+            class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Contact</a>
+        </nav>
+
+        <!-- Dark Mode Toggle (Desktop) -->
+        <button id="theme-toggle"
+          class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+          aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon text-lg" id="theme-toggle-dark-icon"></i>
+          <i class="fas fa-sun text-lg hidden" id="theme-toggle-light-icon"></i>
         </button>
       </div>
 
-      <nav id="main-nav" class="hidden md:flex space-x-3 lg:space-x-4 text-xs lg:text-sm font-medium" role="navigation"
-        aria-label="Primary navigation">
-        <a href="#home"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Home</a>
-        <a href="#about"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">About</a>
-        <a href="#projects"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Projects</a>
-        <a href="#experience"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Experience</a>
-        <a href="#education"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Education</a>
-        <a href="#expertise"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Expertise</a>
-        <a href="#trainings"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Trainings</a>
-        <a href="#interests"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Interests</a>
-        <a href="#contact"
-          class="nav-link text-slate-600 hover:text-indigo-600 transition-colors duration-200 py-2 px-1 lg:px-2">Contact</a>
-      </nav>
+      <!-- Mobile: Dark Mode Toggle + Hamburger Menu -->
+      <div class="flex items-center gap-3 md:hidden">
+        <button id="theme-toggle-mobile"
+          class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none transition-colors"
+          aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon text-lg" id="theme-toggle-dark-icon-mobile"></i>
+          <i class="fas fa-sun text-lg hidden" id="theme-toggle-light-icon-mobile"></i>
+        </button>
+        <button id="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false"
+          class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md p-2 transition-colors">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
     </div>
     <nav id="mobile-menu"
       class="md:hidden bg-white dark:bg-slate-900 shadow-xl hidden flex-col space-y-2 p-5 border-t border-slate-200 dark:border-slate-800"

@@ -74,10 +74,19 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggleDarkIcon.classList.remove('hidden');
         }
 
-        themeToggleBtn.addEventListener('click', function () {
-            // toggle icons inside button
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            // toggle icons for desktop
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
+
+            // toggle icons for mobile
+            const mobileThemeDarkIcon = document.getElementById('theme-toggle-dark-icon-mobile');
+            const mobileThemeLightIcon = document.getElementById('theme-toggle-light-icon-mobile');
+            if (mobileThemeDarkIcon && mobileThemeLightIcon) {
+                mobileThemeDarkIcon.classList.toggle('hidden');
+                mobileThemeLightIcon.classList.toggle('hidden');
+            }
 
             // if set via local storage previously
             if (localStorage.getItem('color-theme')) {
@@ -97,7 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('color-theme', 'dark');
                 }
             }
-        });
+        }
+
+        // Desktop toggle
+        themeToggleBtn.addEventListener('click', toggleDarkMode);
+
+        // Mobile toggle
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        if (themeToggleMobileBtn) {
+            themeToggleMobileBtn.addEventListener('click', toggleDarkMode);
+        }
+
+        // Sync mobile icons on page load
+        const mobileThemeDarkIcon = document.getElementById('theme-toggle-dark-icon-mobile');
+        const mobileThemeLightIcon = document.getElementById('theme-toggle-light-icon-mobile');
+        if (mobileThemeDarkIcon && mobileThemeLightIcon) {
+            if (document.documentElement.classList.contains('dark')) {
+                mobileThemeLightIcon.classList.remove('hidden');
+                mobileThemeDarkIcon.classList.add('hidden');
+            } else {
+                mobileThemeLightIcon.classList.add('hidden');
+                mobileThemeDarkIcon.classList.remove('hidden');
+            }
+        }
 
         // --- Scroll-triggered animations ---
         const observer = new IntersectionObserver((entries, observerInstance) => {
