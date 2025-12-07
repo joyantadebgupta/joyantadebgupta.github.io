@@ -949,7 +949,71 @@ html {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 640px) {
+
+/* Extra small devices (phones, less than 480px) */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  .card {
+    padding: 1rem !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-card {
+    padding: 1.25rem !important;
+    border-radius: 16px !important;
+  }
+
+  #home {
+    padding: 5rem 0.75rem 2rem !important;
+    min-height: auto;
+  }
+
+  .profile-image {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .ai-chat-widget {
+    right: 12px;
+    bottom: 70px;
+  }
+
+  .ai-chat-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ai-chat-window {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 130px;
+    height: 400px;
+  }
+}
+
+/* Small devices (phones, 481px to 640px) */
+@media (min-width: 481px) and (max-width: 640px) {
+  .hero-card {
+    padding: 1.5rem !important;
+  }
+
+  #home {
+    padding: 6rem 1rem 3rem;
+  }
+
   .ai-chat-window {
     width: calc(100vw - 32px);
     right: 16px;
@@ -960,13 +1024,60 @@ html {
     right: 16px;
     bottom: 80px;
   }
+}
 
-  #home {
-    padding: 6rem 1rem 3rem;
+/* Medium devices (tablets, 641px to 768px) */
+@media (min-width: 641px) and (max-width: 768px) {
+  .hero-card {
+    padding: 2rem !important;
   }
 
+  #home {
+    padding: 7rem 1.5rem 3rem;
+  }
+}
+
+/* Large devices (desktops, 769px and up) */
+@media (min-width: 769px) {
   .hero-card {
-    padding: 2rem 1.5rem;
+    padding: 3rem;
+  }
+}
+
+/* Very large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .hero-card {
+    padding: 4rem;
+  }
+}
+
+/* Ensure text wraps properly on all screens */
+p,
+span,
+a,
+li,
+label {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix for long email addresses on mobile */
+a[href^="mailto:"],
+a[href^="tel:"] {
+  word-break: break-all;
+}
+
+/* Ensure forms are always full width on small screens */
+@media (max-width: 768px) {
+  form {
+    width: 100% !important;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    max-width: 100% !important;
   }
 }
 
