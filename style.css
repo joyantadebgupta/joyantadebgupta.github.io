@@ -980,47 +980,66 @@ html {
   }
 
   .ai-chat-widget {
-    right: 10px;
-    bottom: 65px;
+    right: 12px;
+    bottom: 70px;
   }
 
   .ai-chat-button {
-    width: 44px;
-    height: 44px;
-    font-size: 1rem;
+    width: 46px;
+    height: 46px;
+    font-size: 1.125rem;
   }
 
   .ai-chat-window {
-    width: calc(100vw - 20px);
-    right: 10px;
-    bottom: 120px;
-    height: 300px;
-    max-height: 50vh;
+    width: 280px;
+    max-width: calc(100vw - 24px);
+    right: 12px;
+    left: auto;
+    bottom: 125px;
+    height: 320px;
+    max-height: 55vh;
+    border-radius: 10px;
   }
 
   .ai-chat-header {
-    padding: 0.625rem 0.75rem;
-    font-size: 0.8125rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+  }
+
+  .ai-chat-header button {
+    font-size: 0.875rem;
   }
 
   .ai-chat-messages {
-    padding: 0.625rem;
-    font-size: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .ai-chat-input {
-    padding: 0.5rem;
-    gap: 0.375rem;
+    padding: 0.5rem 0.625rem;
+    gap: 0.5rem;
   }
 
   .ai-chat-input input {
-    padding: 0.5rem 0.625rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    border-radius: 6px;
+  }
+
+  .ai-chat-input button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .ai-message {
+    margin-bottom: 0.625rem;
+    gap: 0.375rem;
   }
 
   .ai-message-content {
-    padding: 0.5rem 0.625rem;
-    font-size: 0.6875rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    border-radius: 8px;
   }
 }
 
