@@ -184,6 +184,58 @@ img {
   height: auto;
 }
 
+/* ===== MOBILE LAYOUT FIXES ===== */
+/* Ensure all elements respect box model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Section containers */
+section {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* About section specific fixes */
+#about {
+  max-width: 100%;
+}
+
+#about .flex {
+  max-width: 100%;
+}
+
+#about p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Contact section specific fixes */
+#contact {
+  max-width: 100%;
+}
+
+#contact input,
+#contact textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#contact .flex,
+#contact .grid {
+  max-width: 100%;
+}
+
 /* ===== TYPOGRAPHY ===== */
 .font-handwriting {
   font-family: var(--font-display);
