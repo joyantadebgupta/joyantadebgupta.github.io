@@ -256,6 +256,16 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWindow.classList.toggle('active');
         }
 
+        // Close chat when clicking outside
+        document.addEventListener('click', function (event) {
+            const chatWidget = document.querySelector('.ai-chat-widget');
+            if (chatWindow.classList.contains('active') &&
+                !chatWindow.contains(event.target) &&
+                !chatToggle.contains(event.target)) {
+                chatWindow.classList.remove('active');
+            }
+        });
+
         function addMessage(content, isUser = false) {
             const message = document.createElement('div');
             message.className = `ai-message ${isUser ? 'user' : ''}`;
