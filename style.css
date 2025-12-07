@@ -368,9 +368,9 @@ header {
 
 /* Hero Glass Card */
 .hero-card {
-  background: var(--gradient-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* Let Tailwind handle background transparency */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
   border-radius: var(--radius-2xl);
   padding: 3rem 2rem;
