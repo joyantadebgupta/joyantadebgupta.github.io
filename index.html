@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Joyanta Deb Gupta - Senior Electrical Design & Project Engineer</title>
   <meta name="description"
-    content="Senior Electrical Design & Project Engineer with 9.5+ years of end-to-end expertise in MV/LV systems, substation design, and compliance-driven factory electrification. Based in Bangladesh." />
+    content="Senior Electrical Design & Project Engineer with nearly 10 years of end-to-end expertise in MV/LV systems, substation design, and compliance-driven factory electrification. Based in Bangladesh." />
   <meta name="keywords"
     content="Joyanta Deb Gupta, Electrical Engineer, Project Engineer, Substation Specialist, Compliance Audit Leader, BNBC, NFPA, NESCO, DESCO, AutoCAD, PLC" />
   <meta name="author" content="Joyanta Deb Gupta" />
@@ -19,7 +19,7 @@
   <meta name="theme-color" content="#4f46e5">
   <meta property="og:title" content="Joyanta Deb Gupta - Senior Electrical Design & Project Engineer" />
   <meta property="og:description"
-    content="Explore the portfolio of Joyanta Deb Gupta, showcasing 9.5+ years of experience in electrical engineering, substation design, and compliance leadership." />
+    content="Explore the portfolio of Joyanta Deb Gupta, showcasing nearly 10 years of experience in electrical engineering, substation design, and compliance leadership." />
   <meta property="og:image" content="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg" />
   <!-- Update OG URL -->
   <meta property="og:url" content="https://joyantadebgupta.github.io" />
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Joyanta Deb Gupta - Senior Electrical Design & Project Engineer">
   <meta name="twitter:description"
-    content="Explore the portfolio of Joyanta Deb Gupta, showcasing 9.5+ years of experience in electrical engineering.">
+    content="Explore the portfolio of Joyanta Deb Gupta, showcasing nearly 10 years of experience in electrical engineering.">
   <meta name="twitter:image" content="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg">
   <meta name="twitter:creator" content="@JoyantaDeb">
 
@@ -122,8 +122,6 @@
   <meta name="ICBM" content="23.8103, 90.4125" />
 
   <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
 </head>
@@ -242,7 +240,7 @@
               <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl">
                 Senior <strong class="text-indigo-600 dark:text-indigo-400">Electrical Design & Project
                   Engineer</strong> with
-                <span class="font-bold text-slate-800 dark:text-white"><span id="experience-counter">9.5</span>+
+                <span class="font-bold text-slate-800 dark:text-white"><span id="experience-counter">9.9</span>+
                   years</span>
                 of expertise in MV/LV systems, substation design, and industrial electrification.
               </p>
@@ -266,7 +264,7 @@
                   <div class="text-sm text-slate-500 dark:text-slate-400">Projects</div>
                 </div>
                 <div class="text-center">
-                  <div class="text-3xl font-bold text-gradient">9.5+</div>
+                  <div class="text-3xl font-bold text-gradient" id="stats-years">9.9+</div>
                   <div class="text-sm text-slate-500 dark:text-slate-400">Years Exp.</div>
                 </div>
                 <div class="text-center">
@@ -313,7 +311,7 @@
             class="w-full md:w-2/3 space-y-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed text-justify md:text-left">
             <p>
               I am an accomplished <strong class="text-indigo-600 dark:text-indigo-400">Electrical Design & Project
-                Engineer</strong> with over 9.5 years of comprehensive experience in the dynamic field of electrical
+                Engineer</strong> with nearly 10 years of comprehensive experience in the dynamic field of electrical
               engineering. My expertise spans from medium-voltage (33kV) utility-scale substations to industrial power
               systems and compliance-driven factory electrification in Bangladesh.
             </p>
@@ -417,7 +415,8 @@
                 Electrical Design & Projects</h3>
               <p class="text-slate-600 text-base md:text-lg font-medium mb-1" itemprop="worksFor">Novelty
                 Infrastructures Limited</p>
-              <p class="text-xs text-slate-500 italic">(Promoted from Site Manager to Assistant Manager)</p>
+              <p class="text-xs text-slate-500 italic">(Promoted from Site Manager (2019–2020) to Assistant Manager
+                (2020–Present))</p>
             </div>
             <p class="text-xs md:text-sm text-indigo-500 bg-indigo-100 px-2.5 py-1 rounded-full font-semibold mt-2 sm:mt-0"
               itemprop="dateFrom" content="2019">Nov 2019 – Present</p>
@@ -1015,6 +1014,21 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Service Worker Registration for PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registered:', registration.scope);
+          })
+          .catch(error => {
+            console.log('ServiceWorker registration failed:', error);
+          });
+      });
+    }
+  </script>
 
 </body>
 

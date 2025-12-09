@@ -147,7 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Experience Counter Animation ---
         const experienceCounter = document.getElementById('experience-counter');
         if (experienceCounter) {
-            const targetYears = 9.5;
+            // Calculate years dynamically from career start (January 26, 2016)
+            const careerStart = new Date(2016, 0, 26); // January 26, 2016
+            const now = new Date();
+            const yearsExperience = ((now - careerStart) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+            const targetYears = parseFloat(yearsExperience);
+
             const duration = 1500;
             const frameRate = 30;
             const totalFrames = duration / (1000 / frameRate);
@@ -160,14 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     experienceCounter.textContent = targetYears;
                     clearInterval(timer);
                 } else {
-                    if (Math.floor(currentVal) < 9) {
-                        experienceCounter.textContent = Math.floor(currentVal);
-                    } else {
-                        experienceCounter.textContent = targetYears;
-                        clearInterval(timer);
-                    }
+                    experienceCounter.textContent = currentVal.toFixed(1);
                 }
             }, 1000 / frameRate);
+
+            // Also update the stats section
+            const statsYears = document.getElementById('stats-years');
+            if (statsYears) {
+                statsYears.textContent = targetYears + '+';
+            }
         }
 
         // --- Skills Data ---
@@ -258,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close chat when clicking outside
         document.addEventListener('click', function (event) {
-            const chatWidget = document.querySelector('.ai-chat-widget');
             if (chatWindow.classList.contains('active') &&
                 !chatWindow.contains(event.target) &&
                 !chatToggle.contains(event.target)) {
@@ -287,7 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 1. Check for personal portfolio questions first
             if (queryLower.includes('portfolio') || queryLower.includes('experience') || queryLower.includes('background') || queryLower.includes('who are you')) {
-                return `I'm your portfolio assistant. Joyanta is an Electrical Design & Project Engineer with over 9.5 years of experience, specializing in MV/LV system design, substation design (AIS & GIS), and project management. He is currently the Assistant Manager at Novelty Infrastructures Limited.`;
+                const careerStart = new Date(2016, 0, 26);
+                const yearsExp = ((new Date() - careerStart) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+                return `I'm your portfolio assistant. Joyanta is an Electrical Design & Project Engineer with nearly ${yearsExp} years of experience, specializing in MV/LV system design, substation design (AIS & GIS), and project management. He is currently the Assistant Manager at Novelty Infrastructures Limited.`;
             }
 
             if (queryLower.includes('education') || queryLower.includes('study') || queryLower.includes('degree')) {

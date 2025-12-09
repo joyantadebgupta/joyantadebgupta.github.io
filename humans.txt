@@ -7,7 +7,7 @@
     Location: Mirpur-1, Dhaka, Bangladesh
 
 /* SITE */
-    Last update: 2025/06/07
+    Last update: 2025/12/09
     Language: English
     Standards: HTML5, CSS3, JavaScript
     Components: Tailwind CSS, Font Awesome, Google Fonts
@@ -19,5 +19,5 @@
     Hosting: GitHub Pages
     Version Control: Git
     SEO: Schema.org, OpenGraph, Twitter Cards
-    PWA Support: Web Manifest, Service Worker
+    PWA Support: Web Manifest
     Performance: Resource Preloading, Image Optimization

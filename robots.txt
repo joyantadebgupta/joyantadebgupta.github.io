@@ -1,12 +1,19 @@
 User-agent: *
 Allow: /
-Allow: /#about
-Allow: /#projects
-Allow: /#experience
-Allow: /#education
-Allow: /#expertise
-Allow: /#trainings
-Allow: /#contact
+
+# Disallow sensitive/technical files (doesn't affect SEO)
+Disallow: /.htaccess
+Disallow: /security.txt
+Disallow: /browserconfig.xml
+Disallow: /cache.htaccess
+Disallow: /.git/
+Disallow: /.gitignore
+
+# Allow all SEO-important files
+Allow: /index.html
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /manifest.json
 
 # Specific rules for major search engines
 User-agent: Googlebot
