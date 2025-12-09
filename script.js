@@ -145,14 +145,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // --- Experience Counter Animation ---
+        // Calculate years dynamically from career start (January 26, 2016)
+        const careerStart = new Date(2016, 0, 26); // January 26, 2016
+        const now = new Date();
+        const yearsExperience = ((now - careerStart) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+        const targetYears = parseFloat(yearsExperience);
+
+        // Update all experience year elements
+        const updateAllExperienceYears = () => {
+            // 1. Stats section (9.9+)
+            const statsYears = document.getElementById('stats-years');
+            if (statsYears) {
+                statsYears.textContent = targetYears + '+';
+            }
+
+            // 2. About section (nearly X years)
+            const aboutYears = document.getElementById('about-years');
+            if (aboutYears) {
+                aboutYears.textContent = 'nearly ' + Math.ceil(targetYears) + ' years';
+            }
+
+            // 3. Footer section (X+)
+            const footerYears = document.getElementById('footer-years');
+            if (footerYears) {
+                footerYears.textContent = targetYears + '+';
+            }
+        };
+
+        // Hero section animated counter
         const experienceCounter = document.getElementById('experience-counter');
         if (experienceCounter) {
-            // Calculate years dynamically from career start (January 26, 2016)
-            const careerStart = new Date(2016, 0, 26); // January 26, 2016
-            const now = new Date();
-            const yearsExperience = ((now - careerStart) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
-            const targetYears = parseFloat(yearsExperience);
-
             const duration = 1500;
             const frameRate = 30;
             const totalFrames = duration / (1000 / frameRate);
@@ -168,13 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     experienceCounter.textContent = currentVal.toFixed(1);
                 }
             }, 1000 / frameRate);
-
-            // Also update the stats section
-            const statsYears = document.getElementById('stats-years');
-            if (statsYears) {
-                statsYears.textContent = targetYears + '+';
-            }
         }
+
+        // Update all other experience year elements
+        updateAllExperienceYears();
 
         // --- Skills Data ---
 
