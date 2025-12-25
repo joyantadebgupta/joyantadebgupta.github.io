@@ -17,7 +17,7 @@ Allow: /manifest.json
 
 # Specific rules for major search engines
 User-agent: Googlebot
-Crawl-delay: 5
+Allow: /
 
 User-agent: bingbot
 Crawl-delay: 5
