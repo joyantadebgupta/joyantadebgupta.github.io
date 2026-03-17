@@ -1,14 +1,17 @@
-const CACHE_NAME = 'joyanta-portfolio-v1';
+const CACHE_NAME = 'joyanta-portfolio-v2';
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
     './script.js',
     './manifest.json',
-    'https://cdn.tailwindcss.com',
+    './404.html',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
     'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
 ];
+
+const CACHE_EXPIRY = 24 * 60 * 60 * 1000;
+let lastFetchTime = 0;
 
 // Install event - cache files
 self.addEventListener('install', event => {
@@ -37,9 +40,11 @@ self.addEventListener('activate', event => {
                     }
                 })
             );
+        }).then(() => {
+            lastFetchTime = Date.now();
+            return self.clients.claim();
         })
     );
-    self.clients.claim();
 });
 
 // Fetch event - serve from cache, fallback to network
@@ -49,6 +54,17 @@ self.addEventListener('fetch', event => {
             .then(response => {
                 // Return cached response if found
                 if (response) {
+                    // Check if cache is expired - refresh in background
+                    if (Date.now() - lastFetchTime > CACHE_EXPIRY) {
+                        lastFetchTime = Date.now();
+                        fetch(event.request).then(networkResponse => {
+                            if (networkResponse && networkResponse.status === 200) {
+                                caches.open(CACHE_NAME).then(cache => {
+                                    cache.put(event.request, networkResponse);
+                                });
+                            }
+                        }).catch(() => {});
+                    }
                     return response;
                 }
 

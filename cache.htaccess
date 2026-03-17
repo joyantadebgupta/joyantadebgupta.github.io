@@ -32,7 +32,7 @@ FileETag MTime Size
         Header set Cache-Control "max-age=31536000, public"
     </FilesMatch>
     # CSP Headers
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://openrouter.ai; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data: https://i.postimg.cc; connect-src 'self' https://formspree.io https://openrouter.ai; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
 </IfModule>
 
 # Enable Compression

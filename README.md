@@ -51,11 +51,11 @@ Professional portfolio website showcasing 9+ years of experience as an Electrica
 - **Email:** jadg.power@gmail.com
 - **Phone:** +8801671801435
 - **Location:** Mirpur-1, Dhaka, Bangladesh
-- **LinkedIn:** [Joyanta Deb](https://www.linkedin.com/in/joyanta-deb-013454134)
+- **LinkedIn:** [Joyanta Deb](https://www.linkedin.com/in/joyantadeb)
 - **Facebook:** [Jadg.power](https://www.facebook.com/Jadg.power)
 
 ## License
 
 [MIT License](LICENSE)
 
-© 2025 Joyanta Deb Gupta. All Rights Reserved.
+© 2026 Joyanta Deb Gupta. All Rights Reserved.

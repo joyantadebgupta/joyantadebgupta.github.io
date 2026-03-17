@@ -6,10 +6,10 @@ Header set Referrer-Policy "strict-origin-when-cross-origin"
 Header set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
 Header set X-XSS-Protection "1; mode=block"
 Header set X-Permitted-Cross-Domain-Policies "none"
-Header set Cross-Origin-Embedder-Policy "require-corp"
+# Note: Cross-Origin-Embedder-Policy removed - not supported on GitHub Pages and breaks external resources
 Header set Cross-Origin-Opener-Policy "same-origin"
 Header set Cross-Origin-Resource-Policy "same-origin"
-Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io https://openrouter.ai; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data: https://i.postimg.cc; connect-src 'self' https://formspree.io https://openrouter.ai; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
 
 # Prevent directory browsing
 Options -Indexes
@@ -23,8 +23,8 @@ RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
 
-# Include cache rules
-Include cache.htaccess
+# Note: Include directive removed - GitHub Pages does not support .htaccess
+# Cache rules are handled by GitHub Pages automatically
 
 # Security.txt and well-known redirects
 Redirect 301 /.well-known/security.txt /security.txt
@@ -49,8 +49,8 @@ Protocols h2 h2c http/1.1
 # Enable server push if using HTTP/2
 <IfModule mod_headers.c>
     # Add Link headers for critical resources
-    Header add Link "</styles.css>;rel=preload;as=style"
-    Header add Link "</scripts.js>;rel=preload;as=script"
+    Header add Link "</style.css>;rel=preload;as=style"
+    Header add Link "</script.js>;rel=preload;as=script"
     Header add Link "https://cdn.tailwindcss.com;rel=preload;as=script"
     Header add Link "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css;rel=preload;as=style"
 </IfModule>

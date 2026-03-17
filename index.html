@@ -48,13 +48,14 @@
     img-src 'self' https: data: https://i.postimg.cc;
     connect-src 'self' https://formspree.io https://openrouter.ai https://i.postimg.cc;
     font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
+    frame-ancestors 'none';
     upgrade-insecure-requests;">
 
   <!-- Performance Optimizations -->
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-
-  <!-- PWA Support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="manifest" href="/manifest.json">
   <link rel="browserconfig" href="/browserconfig.xml">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg">
@@ -85,8 +86,6 @@
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
@@ -222,7 +221,7 @@
     </nav>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-8 space-y-8 md:space-y-12" itemscope
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-6 space-y-6 md:space-y-8" itemscope
     itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Joyanta Deb Gupta">
     <meta itemprop="jobTitle" content="Electrical Design & Project Engineer">
@@ -232,7 +231,7 @@
       style="background-image: url('https://i.postimg.cc/mgd9fs7J/PXL-20211010-112005588ss.jpg'); background-size: cover; background-position: center;">
       <div class="hero-content-wrapper-index9">
         <div class="hero-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
-          <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             <!-- Text Content -->
             <div class="lg:w-3/5 text-center lg:text-left order-2 lg:order-1">
               <div
@@ -241,13 +240,13 @@
                 Available for Projects
               </div>
 
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-6 leading-tight">
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-4 leading-tight">
                 <span class="text-gradient">Joyanta Deb</span>
                 <br>
                 <span class="text-slate-800 dark:text-white">Gupta</span>
               </h1>
 
-              <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl">
+              <p class="text-base lg:text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed max-w-2xl">
                 Senior <strong class="text-indigo-600 dark:text-indigo-400">Electrical Design & Project
                   Engineer</strong> with
                 <span class="font-bold text-slate-800 dark:text-white"><span id="experience-counter">9.9</span>+
@@ -268,7 +267,7 @@
 
               <!-- Quick Stats -->
               <div
-                class="flex flex-wrap justify-center lg:justify-start gap-8 mt-10 pt-8 border-t border-slate-200 dark:border-slate-700">
+                class="flex flex-wrap justify-center lg:justify-start gap-6 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
                 <div class="text-center">
                   <div class="text-3xl font-bold text-gradient">50+</div>
                   <div class="text-sm text-slate-500 dark:text-slate-400">Projects</div>
@@ -289,7 +288,7 @@
               <div class="profile-wrapper">
                 <img src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg"
                   alt="Joyanta Deb Gupta - Senior Electrical Engineer"
-                  class="profile-image w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover" loading="eager"
+                  class="profile-image w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-cover" loading="eager"
                   decoding="async"
                   onerror="this.onerror=null;this.src='https://placehold.co/400x400/5046e5/ffffff?text=JDG';">
               </div>
@@ -300,15 +299,15 @@
     </section>
 
     <section id="about" class="bg-white dark:bg-slate-800 rounded-xl shadow-xl overflow-hidden animate-on-scroll">
-      <div class="p-6 md:p-10">
-        <div class="text-center mb-8">
-          <h2 class="section-title text-3xl md:text-4xl mb-2">About Me</h2>
+      <div class="p-5 md:p-8">
+        <div class="text-center mb-6">
+          <h2 class="section-title text-2xl md:text-3xl mb-2">About Me</h2>
           <p class="text-slate-500 dark:text-slate-400">
             A brief introduction to my professional journey and passion.
           </p>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
           <div class="w-full md:w-1/3 flex justify-center md:justify-start flex-shrink-0">
             <div class="relative w-48 md:w-full md:max-w-xs">
               <img src="https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg" alt="Joyanta Deb Gupta at work"
@@ -343,9 +342,9 @@
     </section>
 
     <section id="projects" class="animate-on-scroll">
-      <div class="text-center mb-8 md:mb-10">
-        <h2 class="section-title text-3xl md:text-4xl">Featured Projects</h2>
-        <p class="text-lg text-slate-500 max-w-2xl mx-auto">A selection of projects I've significantly contributed to.
+      <div class="text-center mb-6 md:mb-8">
+        <h2 class="section-title text-2xl md:text-3xl">Featured Projects</h2>
+        <p class="text-base text-slate-500 max-w-2xl mx-auto">A selection of projects I've significantly contributed to.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -412,8 +411,8 @@
 
 
     <section id="experience" class="animate-on-scroll">
-      <div class="text-center mb-8 md:mb-10">
-        <h2 class="section-title text-3xl md:text-4xl">Work Experience</h2>
+      <div class="text-center mb-6 md:mb-8">
+        <h2 class="section-title text-2xl md:text-3xl">Work Experience</h2>
         <p class="text-lg text-slate-500 max-w-2xl mx-auto">My professional journey and key contributions.</p>
       </div>
       <div class="space-y-10 md:space-y-12">
@@ -520,8 +519,8 @@
     </section>
 
     <section id="education" class="animate-on-scroll">
-      <div class="text-center mb-8 md:mb-10">
-        <h2 class="section-title text-3xl md:text-4xl">Education</h2>
+      <div class="text-center mb-6 md:mb-8">
+        <h2 class="section-title text-2xl md:text-3xl">Education</h2>
         <p class="text-lg text-slate-500">My academic qualifications.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -573,8 +572,8 @@
     </section>
 
     <section id="expertise" class="animate-on-scroll">
-      <div class="text-center mb-8 md:mb-10">
-        <h2 class="section-title text-3xl md:text-4xl">Core Expertise & Skills</h2>
+      <div class="text-center mb-6 md:mb-8">
+        <h2 class="section-title text-2xl md:text-3xl">Core Expertise & Skills</h2>
         <p class="text-lg text-slate-500 max-w-2xl mx-auto">A highlight of my technical and professional abilities.</p>
       </div>
       <div id="skills-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -700,8 +699,8 @@
     </section>
 
     <section id="trainings" class="animate-on-scroll">
-      <div class="text-center mb-8 md:mb-10">
-        <h2 class="section-title text-3xl md:text-4xl">Professional Trainings</h2>
+      <div class="text-center mb-6 md:mb-8">
+        <h2 class="section-title text-2xl md:text-3xl">Professional Trainings</h2>
         <p class="text-lg text-slate-500">Key trainings and certifications.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -765,8 +764,8 @@
     </section>
 
     <section id="interests" class="animate-on-scroll">
-      <div class="text-center mb-8 md:mb-10">
-        <h2 class="section-title text-3xl md:text-4xl">Personal Interests</h2>
+      <div class="text-center mb-6 md:mb-8">
+        <h2 class="section-title text-2xl md:text-3xl">Personal Interests</h2>
         <p class="text-lg text-slate-500">A few things I enjoy outside of work.</p>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
@@ -798,19 +797,19 @@
       </div>
     </section>
 
-    <section id="contact" class="rounded-xl shadow-2xl py-10 px-3 md:p-12 animate-on-scroll relative overflow-hidden"
+    <section id="contact" class="rounded-xl shadow-2xl py-8 px-3 md:p-10 animate-on-scroll relative overflow-hidden"
       style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);" itemprop="contactPoint"
       itemscope itemtype="http://schema.org/ContactPoint">
 
       <div class="relative z-10">
-        <div class="text-center mb-8 md:mb-10">
+        <div class="text-center mb-6 md:mb-8">
           <h2 class="text-3xl md:text-4xl font-bold mb-3 text-white">Let's Connect</h2>
           <p class="text-white/90 text-sm md:text-lg max-w-2xl mx-auto px-2">
             I'm always open to discussing new projects or opportunities.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto w-full items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 max-w-6xl mx-auto w-full items-start">
 
           <div class="space-y-6 md:space-y-8 flex flex-col justify-center order-2 lg:order-1 px-1">
             <div>

@@ -78,62 +78,400 @@
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== DARK MODE TAILWIND OVERRIDES ===== */
-/* These override Tailwind's bg-white class in dark mode */
-.dark .bg-white {
+/* ===== DARK MODE STYLES ===== */
+/* Using CSS variables that Tailwind can work with */
+html.dark {
+  --bg-base: #0c0c14;
+  --bg-surface: #13131f;
+  --bg-elevated: #1a1a2e;
+  --bg-muted: #252540;
+  --text-heading: #ffffff;
+  --text-body: #c4c4d4;
+  --text-muted: #8888a4;
+  --border: #2a2a4a;
+}
+
+html.dark .bg-white {
+  background-color: #1a1a2e;
+}
+
+html.dark .bg-slate-50 {
+  background-color: #0c0c14;
+}
+
+html.dark .bg-slate-100 {
+  background-color: #13131f;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-800 {
+  color: #e2e8f0;
+}
+
+html.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8;
+}
+
+html.dark .border-slate-200 {
+  border-color: #2a2a4a;
+}
+
+/* Dark mode for icons */
+html.dark .fa,
+html.dark .fas,
+html.dark .far,
+html.dark .fab,
+html.dark .fal,
+html.dark .fad {
+  color: #94a3b8;
+}
+
+html.dark .text-slate-800 {
+  color: #e2e8f0;
+}
+
+html.dark .text-slate-700 {
+  color: #cbd5e1;
+}
+
+/* Dark mode for experience counter text */
+html.dark #experience-counter,
+html.dark #stats-years,
+html.dark #footer-years,
+html.dark #about-years {
+  color: #e2e8f0;
+}
+
+/* Dark mode card styles */
+html.dark .project-card,
+html.dark .experience-card,
+html.dark .skill-item-pro,
+html.dark .interest-item,
+html.dark .training-card,
+html.dark .education-card,
+html.dark .card {
+  background-color: #1a1a2e;
+  border-color: #2a2a4a;
+}
+
+html.dark .text-indigo-700,
+html.dark .text-indigo-600 {
+  color: #818cf8;
+}
+
+html.dark .text-indigo-800 {
+  color: #a5b4fc;
+}
+
+/* Dark mode for text inside cards */
+html.dark .experience-card p,
+html.dark .project-card p,
+html.dark .education-card p,
+html.dark .training-card p,
+html.dark .skill-item-pro p,
+html.dark .interest-item p {
+  color: #c4c4d4;
+}
+
+html.dark .experience-card h3,
+html.dark .project-card h3,
+html.dark .education-card h3,
+html.dark .training-card h3 {
+  color: #e2e8f0;
+}
+
+/* Dark mode for list items in cards */
+html.dark .experience-card li,
+html.dark .training-card li {
+  color: #c4c4d4;
+}
+
+html.dark .experience-card ul li::before {
+  color: #818cf8;
+}
+
+html.dark .achievement-list li::before {
+  color: #f472b6;
+}
+
+html.dark .text-indigo-500 {
+  color: #a5b4fc;
+}
+
+/* ===== COMPREHENSIVE DARK MODE STYLES ===== */
+
+/* All white background cards */
+html.dark .bg-white,
+html.dark [class*="bg-white"] {
   background-color: #1a1a2e !important;
-  color: #e2e8f0 !important;
 }
 
-.dark .bg-slate-50 {
-  background-color: #0c0c14 !important;
+/* All slate text colors */
+html.dark .text-slate-500,
+html.dark .text-slate-400 {
+  color: #94a3b8;
 }
 
-.dark .bg-slate-100 {
-  background-color: #13131f !important;
+html.dark .text-slate-600 {
+  color: #cbd5e1;
 }
 
-.dark .text-slate-700,
-.dark .text-slate-800 {
-  color: #e2e8f0 !important;
+html.dark .text-slate-700 {
+  color: #e2e8f0;
 }
 
-.dark .text-slate-600 {
-  color: #cbd5e1 !important;
+html.dark .text-slate-800 {
+  color: #f1f5f9;
 }
 
-.dark .text-slate-500 {
-  color: #94a3b8 !important;
+/* Indigo text */
+html.dark .text-indigo-600 {
+  color: #818cf8;
 }
 
-.dark .text-indigo-700,
-.dark .text-indigo-600 {
+html.dark .text-indigo-700 {
+  color: #a5b4fc;
+}
+
+html.dark .text-indigo-800 {
+  color: #c7d2fe;
+}
+
+/* Green text */
+html.dark .text-green-600,
+html.dark .text-green-700 {
+  color: #4ade80;
+}
+
+/* Sky text */
+html.dark .text-sky-600,
+html.dark .text-sky-700 {
+  color: #38bdf8;
+}
+
+/* Amber text */
+html.dark .text-amber-600,
+html.dark .text-amber-700 {
+  color: #fbbf24;
+}
+
+/* Rose text */
+html.dark .text-rose-600 {
+  color: #fb7185;
+}
+
+/* Cyan text */
+html.dark .text-cyan-600 {
+  color: #22d3d1;
+}
+
+/* Emerald text */
+html.dark .text-emerald-600,
+html.dark .text-emerald-700 {
+  color: #34d399;
+}
+
+/* Emerald background */
+html.dark .bg-emerald-100 {
+  background-color: #064e3b !important;
+}
+
+/* Interest items */
+html.dark .interest-item {
+  background-color: #1a1a2e !important;
+  border-color: #334155;
+}
+
+html.dark .interest-item i {
+  color: #818cf8;
+}
+
+html.dark .interest-item p {
+  color: #e2e8f0;
+}
+
+/* Back to top button - stronger specificity */
+html.dark #back-to-top,
+html.dark #back-to-top i,
+html.dark #back-to-top .fa-arrow-up {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%) !important;
+  color: white !important;
+}
+
+/* Chat button - stronger specificity */
+html.dark .ai-chat-widget .ai-chat-button,
+html.dark .ai-chat-widget .ai-chat-button i,
+html.dark .ai-chat-widget .ai-chat-button .fa-robot {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%) !important;
+  color: white !important;
+}
+
+/* Chat close button */
+html.dark #ai-chat-close,
+html.dark #ai-chat-close i {
+  color: white !important;
+}
+
+/* Additional backgrounds */
+html.dark .bg-slate-100 {
+  background-color: #1e293b !important;
+}
+
+html.dark .bg-slate-900 {
+  background-color: #0f172a !important;
+}
+
+html.dark .bg-indigo-900\/30,
+html.dark .bg-indigo-900\/30 {
+  background-color: #312e81 !important;
+}
+
+/* Round badge backgrounds */
+html.dark .bg-indigo-100 {
+  background-color: #1e1b4b !important;
+}
+
+/* Inline icon backgrounds in cards */
+html.dark [class*="rounded-full"][class*="bg-indigo-100"],
+html.dark [class*="rounded-lg"][class*="bg-indigo-100"],
+html.dark [class*="rounded-lg"][class*="bg-green-100"],
+html.dark [class*="rounded-lg"][class*="bg-sky-100"],
+html.dark [class*="rounded-lg"][class*="bg-amber-100"],
+html.dark [class*="rounded-lg"][class*="bg-emerald-100"],
+html.dark [class*="rounded-full"][class*="bg-indigo-100"],
+html.dark [class*="rounded-full"][class*="bg-green-100"],
+html.dark [class*="rounded-full"][class*="bg-sky-100"] {
+  background-color: #1e293b !important;
+}
+
+/* Chat message bot background */
+html.dark .ai-chat-window .w-8.h-8.rounded-full.bg-indigo-100 {
+  background-color: #312e81 !important;
+}
+
+/* Border colors */
+html.dark .border-indigo-200,
+html.dark .border-slate-200 {
+  border-color: #334155;
+}
+
+/* Background colors for icons */
+html.dark .bg-indigo-100,
+html.dark .bg-green-100,
+html.dark .bg-sky-100,
+html.dark .bg-amber-100,
+html.dark .bg-cyan-100,
+html.dark .bg-rose-100 {
+  background-color: #1e293b !important;
+}
+
+/* Icon colors inside colored backgrounds */
+html.dark .bg-indigo-100 .text-indigo-600,
+html.dark .bg-green-100 .text-green-600,
+html.dark .bg-sky-100 .text-sky-600,
+html.dark .bg-amber-100 .text-amber-600,
+html.dark .bg-cyan-100 .text-cyan-600,
+html.dark .bg-rose-100 .text-rose-600 {
   color: #818cf8 !important;
 }
 
-.dark .text-indigo-500 {
-  color: #a5b4fc !important;
+html.dark .bg-green-100 .text-green-600 {
+  color: #4ade80 !important;
 }
 
-.dark .border-slate-200 {
-  border-color: #2a2a4a !important;
+html.dark .bg-sky-100 .text-sky-600 {
+  color: #38bdf8 !important;
 }
 
-.dark .shadow-lg,
-.dark .shadow-xl {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+/* Back to top button */
+html.dark #back-to-top {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%);
+  color: white;
 }
 
-/* Dark mode for specific component types */
-.dark .project-card,
-.dark .experience-card,
-.dark .skill-item-pro,
-.dark .interest-item,
-.dark .training-card,
-.dark .education-card,
-.dark .card {
-  background-color: #1a1a2e !important;
-  border-color: #2a2a4a !important;
+/* Chat widget */
+html.dark .ai-chat-window {
+  background: #1a1a2e;
+  border-color: #334155;
+}
+
+html.dark .ai-chat-messages {
+  background: #0c0c14;
+}
+
+html.dark .ai-chat-input {
+  background: #1a1a2e;
+  border-color: #334155;
+}
+
+html.dark .ai-chat-input input {
+  background: #0c0c14;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+html.dark .ai-chat-input input::placeholder {
+  color: #64748b;
+}
+
+html.dark .ai-chat-button {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%);
+}
+
+/* Footer */
+html.dark footer {
+  background: #13131f;
+  border-color: #334155;
+}
+
+html.dark .footer-column-title {
+  color: #e2e8f0;
+}
+
+html.dark .footer-link {
+  color: #94a3b8;
+}
+
+html.dark .footer-link:hover {
+  color: #818cf8;
+}
+
+html.dark .footer-social-icon {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+html.dark .footer-social-icon i {
+  color: #94a3b8;
+}
+
+html.dark .footer-social-icon:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #f472b6 100%);
+}
+
+html.dark .footer-social-icon:hover i {
+  color: white;
+}
+
+/* All Font Awesome icons */
+html.dark i.fa,
+html.dark i.fas,
+html.dark i.far,
+html.dark i.fab,
+html.dark i.fal,
+html.dark i.fad {
+  color: #94a3b8;
+}
+
+html.dark .fa-envelope,
+html.dark .fa-phone,
+html.dark .fa-map-marker-alt,
+html.dark .fa-globe {
+  color: #94a3b8;
 }
 
 /* ===== BASE RESET ===== */
@@ -148,6 +486,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-base);
 }
 
 body {
@@ -184,13 +524,6 @@ img {
 }
 
 /* ===== MOBILE LAYOUT FIXES ===== */
-/* Ensure all elements respect box model */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 /* Prevent horizontal overflow */
 html,
 body {
@@ -338,7 +671,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8rem 1.5rem 4rem;
+  padding: 5rem 1rem 2rem;
   background: var(--bg-base);
   position: relative;
   overflow: hidden;
@@ -372,19 +705,19 @@ header {
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
   border-radius: var(--radius-2xl);
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem;
   box-shadow: var(--shadow-xl);
 }
 
 @media (min-width: 768px) {
   .hero-card {
-    padding: 4rem 3rem;
+    padding: 2.5rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-card {
-    padding: 5rem 4rem;
+    padding: 3rem 2.5rem;
   }
 }
 
@@ -432,14 +765,14 @@ header {
 
 /* ===== SECTIONS ===== */
 main>section:not(#home) {
-  padding: 5rem 0;
-  margin-bottom: 2rem;
+  padding: 3rem 0;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
   main>section:not(#home) {
-    padding: 6rem 0;
-    margin-bottom: 3rem;
+    padding: 4rem 0;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -695,6 +1028,27 @@ footer {
   box-shadow: var(--shadow-glow);
 }
 
+/* Dark mode button fixes */
+html.dark .btn-secondary {
+  background: #1a1a2e;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+html.dark .btn-secondary:hover {
+  border-color: #818cf8;
+}
+
+/* Hero section icons and elements */
+html.dark .btn-primary i,
+html.dark .btn-secondary i,
+html.dark .fa-arrow-right,
+html.dark .fa-folder-open {
+  color: inherit;
+}
+  box-shadow: var(--shadow-glow);
+}
+
 /* ===== ANIMATIONS ===== */
 .animate-on-scroll {
   opacity: 0;
@@ -757,11 +1111,6 @@ footer {
   background: var(--gradient-primary);
   border-radius: 10px;
   border: 2px solid var(--bg-base);
-}
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) var(--bg-base);
 }
 
 /* ===== AI CHAT WIDGET ===== */
@@ -963,7 +1312,7 @@ html {
   }
 
   #home {
-    padding: 5rem 0.75rem 2rem !important;
+    padding: 4.5rem 0.5rem 1.5rem !important;
     min-height: auto;
   }
 
