@@ -33,10 +33,12 @@ Joyanta Deb Gupta is a Senior Electrical Design & Project Engineer with 10+ year
 ## Skills
 - Substation Design (AIS & GIS)
 - Single Line Diagrams (SLD) & Electrical Layouts (ELD)
+- Load Flow & Short-Circuit Calculations
 - Earthing System & Lightning Protection
 - BOQ Preparation & Cost Estimation
 - Technical Documentation
 - AutoCAD, PLC
+- Languages: Bengali (Native), English (Professional), Hindi (Conversational)
 
 ## Education
 - B.Sc. in Electrical & Electronics Engineering (Uttara University)
