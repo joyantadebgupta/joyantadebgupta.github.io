@@ -22,6 +22,14 @@
             <image:loc>https://joyantadebgupta.github.io/images/project-desco.jpg</image:loc>
             <image:title>DESCO GIS Substations</image:title>
         </image:image>
+        <image:image>
+            <image:loc>https://joyantadebgupta.github.io/images/demo-pgcb.jpg</image:loc>
+            <image:title>PGCB Aricha Grid Substation</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://joyantadebgupta.github.io/images/demo-solar.jpg</image:loc>
+            <image:title>Solar Plant Electrical Design</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://joyantadebgupta.github.io/joyanta-deb-gupta-cv.pdf</loc>

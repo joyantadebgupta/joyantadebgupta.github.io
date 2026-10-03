@@ -318,6 +318,41 @@ document.addEventListener('DOMContentLoaded', () => {
             updateProgress();
         }
 
+        // --- Experience role tabs ---
+        const expTabs = Array.from(document.querySelectorAll('[data-exp-tabs] [role="tab"]'));
+        const expPanels = Array.from(document.querySelectorAll('[data-exp-tabs] [role="tabpanel"]'));
+
+        function activateExpTab(tab, focusPanel) {
+            if (!tab) return;
+            expTabs.forEach(t => {
+                const selected = t === tab;
+                t.classList.toggle('is-active', selected);
+                t.setAttribute('aria-selected', String(selected));
+                t.tabIndex = selected ? 0 : -1;
+            });
+            expPanels.forEach(p => {
+                const show = p.id === tab.getAttribute('aria-controls');
+                p.classList.toggle('is-active', show);
+                if (show && focusPanel) p.focus({ preventScroll: true });
+            });
+        }
+
+        if (expTabs.length > 0) {
+            expTabs.forEach((tab, idx) => {
+                tab.addEventListener('click', () => activateExpTab(tab, false));
+                tab.addEventListener('keydown', (e) => {
+                    let next = null;
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = expTabs[(idx + 1) % expTabs.length];
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = expTabs[(idx - 1 + expTabs.length) % expTabs.length];
+                    if (next) {
+                        e.preventDefault();
+                        next.focus();
+                        activateExpTab(next, false);
+                    }
+                });
+            });
+        }
+
         // --- Back to Top Button ---
         const backToTopButton = document.getElementById('back-to-top');
         if (backToTopButton) {

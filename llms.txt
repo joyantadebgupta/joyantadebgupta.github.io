@@ -15,6 +15,8 @@ Joyanta Deb Gupta is a Senior Electrical Design & Project Engineer with 10+ year
    - Full ownership of electrical design & execution for MV/LV systems
    - Led 5 NESCO 33/11kV AIS Substations (100% on schedule)
    - Commissioned 10 Power Transformers (16/20 MVA) & 23 Outdoor VCBs
+   - Leading PGCB Aricha 230/132/33kV grid substation installation & pre-commissioning
+   - Closed Cox's Bazar 132/33kV AIS upgradation (3 high-capacity transformers)
 
 2. **Site Engineer – Projects** at Siemens Bangladesh Limited (Sep 2017 – Oct 2019)
    - Supervised 24 DESCO 33/11kV GIS substations
@@ -26,12 +28,18 @@ Joyanta Deb Gupta is a Senior Electrical Design & Project Engineer with 10+ year
 
 ## Key Projects
 - NESCO 33/11 kV AIS Substations (5 Units)
+- PGCB Aricha 230/132/33 kV AIS Grid Substation
+- Cox's Bazar 132/33 kV AIS Substation Upgradation
 - Industrial Electrification (50+ Clients: ACI, Epic Group, Ananta)
 - DESCO 33/11 kV GIS Substations (24 Units)
 - Bangladesh National Parliament 11kV GIS Project
+- Solar Plant Electrical Design (Up to 100 MW)
+- Factory Electrical Rectification (15+ Sites)
 
 ## Skills
 - Substation Design (AIS & GIS)
+- Solar Plant Design (Up to 100 MW)
+- VFD, PLC/HMI & SCADA Automation
 - Single Line Diagrams (SLD) & Electrical Layouts (ELD)
 - Load Flow & Short-Circuit Calculations
 - Earthing System & Lightning Protection
