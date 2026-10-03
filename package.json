@@ -1,0 +1,12 @@
+{
+  "name": "joyanta-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portfolio website of Joyanta Deb Gupta (static site, deployed on GitHub Pages)",
+  "scripts": {
+    "check": "node --check script.js && node scripts/check.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

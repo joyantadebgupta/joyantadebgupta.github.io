@@ -3,24 +3,30 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://joyantadebgupta.github.io/</loc>
-        <lastmod>2026-03-17</lastmod>
+        <lastmod>2026-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg</image:loc>
+            <image:loc>https://joyantadebgupta.github.io/images/og-cover.jpg</image:loc>
             <image:title>Joyanta Deb Gupta - Professional Portrait</image:title>
         </image:image>
         <image:image>
-            <image:loc>https://i.postimg.cc/1z2NXrCK/PXL-20211010-112114038.jpg</image:loc>
+            <image:loc>https://joyantadebgupta.github.io/images/project-nesco.jpg</image:loc>
             <image:title>NESCO Substation Project</image:title>
         </image:image>
         <image:image>
-            <image:loc>https://i.postimg.cc/TY6gnQR7/IMG-20221119-190846.jpg</image:loc>
+            <image:loc>https://joyantadebgupta.github.io/images/project-industrial.jpg</image:loc>
             <image:title>Industrial Substation Designs</image:title>
         </image:image>
         <image:image>
-            <image:loc>https://i.postimg.cc/2ypvc7n5/IMG-20190509-WA0002.jpg</image:loc>
+            <image:loc>https://joyantadebgupta.github.io/images/project-desco.jpg</image:loc>
             <image:title>DESCO GIS Substations</image:title>
         </image:image>
+    </url>
+    <url>
+        <loc>https://joyantadebgupta.github.io/joyanta-deb-gupta-cv.pdf</loc>
+        <lastmod>2026-10-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
     </url>
 </urlset>

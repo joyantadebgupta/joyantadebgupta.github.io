@@ -1,4 +1,4 @@
-const CACHE_NAME = 'joyanta-portfolio-v2';
+const CACHE_NAME = 'joyanta-portfolio-v5';
 const urlsToCache = [
     './',
     './index.html',
@@ -6,26 +6,23 @@ const urlsToCache = [
     './script.js',
     './manifest.json',
     './404.html',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
-    'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
+    './humans.txt',
+    './llms.txt',
+    './joyanta-deb-gupta-cv.pdf',
+    './icons/icon-192.jpg',
+    './icons/icon-512.jpg',
+    './icons/apple-touch-icon.jpg',
+    './images/portrait.jpg',
+    './images/hero-bg.jpg'
 ];
 
-const CACHE_EXPIRY = 24 * 60 * 60 * 1000;
-let lastFetchTime = 0;
-
-// Install event - cache files
+// Install event - cache same-origin files only (addAll is atomic, so keep it local).
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
-            .catch(err => {
-                console.log('Cache install failed:', err);
-            })
+            .then(cache => cache.addAll(urlsToCache))
+            .catch(() => {})
     );
-    self.skipWaiting();
 });
 
 // Activate event - clean up old caches
@@ -35,66 +32,69 @@ self.addEventListener('activate', event => {
             return Promise.all(
                 cacheNames.map(cacheName => {
                     if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
                     }
+                    return Promise.resolve(false);
                 })
             );
-        }).then(() => {
-            lastFetchTime = Date.now();
-            return self.clients.claim();
-        })
+        }).then(() => self.clients.claim())
     );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Offline fallback page (never resolves to undefined)
+function offlineFallback() {
+    return caches.match('./index.html').then(cached => {
+        if (cached) return cached;
+        return caches.match('./404.html').then(notFound => {
+            if (notFound) return notFound;
+            return new Response('You are offline and the cached page is unavailable.', {
+                status: 503,
+                headers: { 'Content-Type': 'text/plain' }
+            });
+        });
+    });
+}
+
+// Fetch event:
+// - HTML navigations: network-first (always fresh after deploys), cache fallback offline.
+// - Static same-origin GET assets: stale-while-revalidate.
+// - Non-GET and cross-origin: pass through, never cache.
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Return cached response if found
-                if (response) {
-                    // Check if cache is expired - refresh in background
-                    if (Date.now() - lastFetchTime > CACHE_EXPIRY) {
-                        lastFetchTime = Date.now();
-                        fetch(event.request).then(networkResponse => {
-                            if (networkResponse && networkResponse.status === 200) {
-                                caches.open(CACHE_NAME).then(cache => {
-                                    cache.put(event.request, networkResponse);
-                                });
-                            }
-                        }).catch(() => {});
+    const request = event.request;
+    if (request.method !== 'GET') return;
+
+    const url = new URL(request.url);
+    const isSameOrigin = url.origin === self.location.origin;
+
+    // Navigation / HTML: network first
+    if (request.mode === 'navigate' || (request.headers.get('accept') || '').includes('text/html')) {
+        event.respondWith(
+            fetch(request)
+                .then(networkResponse => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        const copy = networkResponse.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(request, copy)).catch(() => {});
                     }
-                    return response;
+                    return networkResponse;
+                })
+                .catch(() => offlineFallback())
+        );
+        return;
+    }
+
+    // Only runtime-cache same-origin GET assets
+    if (!isSameOrigin) return;
+
+    event.respondWith(
+        caches.match(request).then(cached => {
+            const networkFetch = fetch(request).then(networkResponse => {
+                if (networkResponse && networkResponse.status === 200) {
+                    const copy = networkResponse.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(request, copy)).catch(() => {});
                 }
-
-                // Clone the request
-                const fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest)
-                    .then(response => {
-                        // Check if valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone the response
-                        const responseToCache = response.clone();
-
-                        // Cache the fetched response
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return response;
-                    })
-                    .catch(() => {
-                        // Return offline fallback for navigation requests
-                        if (event.request.mode === 'navigate') {
-                            return caches.match('./index.html');
-                        }
-                    });
-            })
+                return networkResponse;
+            }).catch(() => cached || offlineFallback());
+            return cached || networkFetch;
+        })
     );
 });

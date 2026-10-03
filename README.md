@@ -1,6 +1,6 @@
 # Joyanta Deb Gupta - Portfolio Website
 
-Professional portfolio website showcasing 9+ years of experience as an Electrical Design & Project Engineer.
+Professional portfolio website showcasing 10+ years of experience as an Electrical Design & Project Engineer.
 
 ## Website Sections
 
@@ -16,17 +16,16 @@ Professional portfolio website showcasing 9+ years of experience as an Electrica
 
 ## Key Features
 
-- Single Page Application (SPA) design
+- Single-page design with in-page anchors
 - Responsive layout for all devices
-- AI-powered chatbot assistant
 - Animated scroll effects
 - Form handling with Formspree
 - Microdata implementation for SEO
 - Performance optimized with:
+  - Compressed locally-hosted images
   - Image lazy loading
   - Resource preloading
-  - CSS/JS optimization
-  - HTTP/2 support
+  - Service-worker offline caching
 
 ## Technologies
 
@@ -35,8 +34,7 @@ Professional portfolio website showcasing 9+ years of experience as an Electrica
 - Vanilla JavaScript
 - Font Awesome icons
 - Google Fonts
-- OpenRouter AI API integration
-- Formspree for form handling
+- Formspree for form handling (contact form)
 
 ## Browser Support
 

@@ -7,12 +7,11 @@
     Location: Mirpur-1, Dhaka, Bangladesh
 
 /* SITE */
-    Last update: 2026/03/17
+    Last update: 2026/10/02
     Language: English
     Standards: HTML5, CSS3, JavaScript
     Components: Tailwind CSS, Font Awesome, Google Fonts
     Software: VS Code, Git, GitHub Pages
-    AI Integration: OpenRouter API
     Form Handler: Formspree
 
 /* TECHNOLOGIES */
@@ -20,4 +19,4 @@
     Version Control: Git
     SEO: Schema.org, OpenGraph, Twitter Cards
     PWA Support: Web Manifest
-    Performance: Resource Preloading, Image Optimization
+    Performance: Resource Preloading, Image Lazy Loading, Compressed Local Images

@@ -1,0 +1,50 @@
+# Joyanta Deb Gupta - Portfolio
+
+## About
+Joyanta Deb Gupta is a Senior Electrical Design & Project Engineer with 10+ years of expertise in MV/LV systems, substation design, and industrial electrification in Bangladesh.
+
+## Professional Summary
+- Lead electrical design and project execution for medium and low voltage systems
+- Expertise in 33/11kV AIS and GIS substation design
+- Experience with power transformers, VCBs, and switchgear
+- Compliance expertise: BNBC 2020, NFPA 70/72/780
+- Auditing experience: RSC, Nirapon, Elevate, DIFE, Bureau Veritas
+
+## Work Experience
+1. **Assistant Manager – Electrical Design & Projects** at Novelty Infrastructures Limited (Nov 2019 – Present)
+   - Full ownership of electrical design & execution for MV/LV systems
+   - Led 5 NESCO 33/11kV AIS Substations (100% on schedule)
+   - Commissioned 10 Power Transformers (16/20 MVA) & 23 Outdoor VCBs
+
+2. **Site Engineer – Projects** at Siemens Bangladesh Limited (Sep 2017 – Oct 2019)
+   - Supervised 24 DESCO 33/11kV GIS substations
+   - Commissioned 19 Power Transformers (20/28 MVA)
+   - Led National Parliament 11kV GIS Project
+
+3. **Junior Engineer – Projects** at Novelty Engineering Corporation (Jan 2016 – Aug 2017)
+   - Executed electrical rectification for 15+ factories
+
+## Key Projects
+- NESCO 33/11 kV AIS Substations (5 Units)
+- Industrial Electrification (50+ Clients: ACI, Epic Group, Ananta)
+- DESCO 33/11 kV GIS Substations (24 Units)
+- Bangladesh National Parliament 11kV GIS Project
+
+## Skills
+- Substation Design (AIS & GIS)
+- Single Line Diagrams (SLD) & Electrical Layouts (ELD)
+- Earthing System & Lightning Protection
+- BOQ Preparation & Cost Estimation
+- Technical Documentation
+- AutoCAD, PLC
+
+## Education
+- B.Sc. in Electrical & Electronics Engineering (Uttara University)
+- Diploma in Engineering (Power Technology, Mymensingh Polytechnic Institute)
+
+## Contact
+- Location: Dhaka, Bangladesh
+- Phone: +880 1671 801435
+- LinkedIn: linkedin.com/in/joyantadeb
+- Facebook: facebook.com/Jadg.power
+- Website: joyantadebgupta.github.io

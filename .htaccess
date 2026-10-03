@@ -1,15 +1,17 @@
+# NOTE: GitHub Pages ignores .htaccess entirely. The enforced policy in production
+# is the <meta http-equiv="Content-Security-Policy"> in index.html. Keep this file's
+# CSP value in sync with index.html for Apache/self-hosted deployments only.
 # Enhanced Security Headers
 Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-Header set X-Frame-Options "DENY"
+Header always set X-Frame-Options "DENY"
 Header set X-Content-Type-Options "nosniff"
 Header set Referrer-Policy "strict-origin-when-cross-origin"
 Header set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
-Header set X-XSS-Protection "1; mode=block"
 Header set X-Permitted-Cross-Domain-Policies "none"
 # Note: Cross-Origin-Embedder-Policy removed - not supported on GitHub Pages and breaks external resources
 Header set Cross-Origin-Opener-Policy "same-origin"
 Header set Cross-Origin-Resource-Policy "same-origin"
-Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data: https://i.postimg.cc; connect-src 'self' https://formspree.io https://openrouter.ai; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https: data:; connect-src 'self' https://formspree.io; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; frame-ancestors 'none'; upgrade-insecure-requests;"
 
 # Prevent directory browsing
 Options -Indexes
@@ -26,31 +28,22 @@ RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
 # Note: Include directive removed - GitHub Pages does not support .htaccess
 # Cache rules are handled by GitHub Pages automatically
 
-# Security.txt and well-known redirects
-Redirect 301 /.well-known/security.txt /security.txt
-Redirect 301 /.well-known/browserconfig.xml /browserconfig.xml
+# Apache-only note: security.txt is served as a physical file at
+# /.well-known/security.txt (canonical) and /security.txt (convenience).
 
 # Error pages
 ErrorDocument 404 /404.html
 
-# Force trailing slash
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+# NOTE: no trailing-slash forcing — GitHub Pages handles URLs natively and a
+# blanket extensionless-path rule can loop against extensionless site paths.
 
-# Protection against common vulnerabilities
+# Protection against common vulnerabilities (Apache 2.4 syntax)
 <FilesMatch "^\.">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </FilesMatch>
 
-# Enable HTTP/2 if available
-Protocols h2 h2c http/1.1
+# HTTP/2 (only if mod_http2 is available; h2c removed — unencrypted HTTP/2 is discouraged)
+# Protocols h2 http/1.1
 
-# Enable server push if using HTTP/2
-<IfModule mod_headers.c>
-    # Add Link headers for critical resources
-    Header add Link "</style.css>;rel=preload;as=style"
-    Header add Link "</script.js>;rel=preload;as=script"
-    Header add Link "https://cdn.tailwindcss.com;rel=preload;as=script"
-    Header add Link "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css;rel=preload;as=style"
-</IfModule>
+# NOTE: no Link preload headers — resource hints live in index.html <link> tags,
+# which is the single source of truth (avoids header/markup drift).

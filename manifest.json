@@ -2,6 +2,8 @@
   "name": "Joyanta Deb Gupta - Electrical Design & Project Engineer",
   "short_name": "Joyanta Portfolio",
   "description": "Professional portfolio of Joyanta Deb Gupta, an experienced Electrical Design & Project Engineer",
+  "id": "https://joyantadebgupta.github.io/",
+  "lang": "en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,29 +12,33 @@
   "theme_color": "#4f46e5",
   "icons": [
     {
-      "src": "https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg",
+      "src": "./icons/icon-192.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "https://i.postimg.cc/0jpSLKC0/2020-06-05.jpg",
+      "src": "./icons/icon-512.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192-maskable.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-512-maskable.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
     }
   ],
   "categories": [
     "portfolio",
     "professional",
     "engineering"
-  ],
-  "screenshots": [
-    {
-      "src": "https://i.postimg.cc/1z2NXrCK/PXL-20211010-112114038.jpg",
-      "sizes": "1280x720",
-      "type": "image/jpeg",
-      "label": "Projects Overview"
-    }
   ]
 }

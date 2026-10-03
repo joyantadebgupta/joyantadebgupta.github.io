@@ -3,27 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+        const mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
 
-        mobileMenuButton.addEventListener('click', () => {
-            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', !expanded);
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            mobileMenuIcon.classList.toggle('fa-bars');
-            mobileMenuIcon.classList.toggle('fa-times');
-        });
-
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                mobileMenuButton.setAttribute('aria-expanded', false);
-                mobileMenuIcon.classList.add('fa-bars');
-                mobileMenuIcon.classList.remove('fa-times');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', String(!expanded));
+                mobileMenuButton.setAttribute('aria-controls', 'mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                if (mobileMenuIcon) {
+                    mobileMenuIcon.classList.toggle('fa-bars');
+                    mobileMenuIcon.classList.toggle('fa-times');
+                }
             });
-        });
+
+            // Close mobile menu on link click
+            mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    if (mobileMenuIcon) {
+                        mobileMenuIcon.classList.add('fa-bars');
+                        mobileMenuIcon.classList.remove('fa-times');
+                    }
+                });
+            });
+        }
 
         // --- Active nav link on scroll ---
         const sections = document.querySelectorAll('main section[id]');
@@ -47,26 +54,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             mobileNavLinks.forEach(link => {
-                link.classList.remove('active', 'bg-indigo-100', 'text-indigo-600', 'font-semibold');
-                link.classList.add('text-slate-700');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
-                    link.classList.add('active', 'bg-indigo-100', 'text-indigo-600', 'font-semibold');
-                    link.classList.remove('text-slate-700');
-                }
+                const isActive = link.getAttribute('href') === `#${currentSectionId}`;
+                link.classList.toggle('active', isActive);
+                link.classList.toggle('bg-indigo-100', isActive);
+                link.classList.toggle('dark:bg-slate-800', isActive);
+                link.classList.toggle('text-indigo-600', isActive);
+                link.classList.toggle('dark:text-indigo-400', isActive);
+                link.classList.toggle('font-semibold', isActive);
+                link.classList.toggle('text-slate-700', !isActive);
+                link.classList.toggle('dark:text-slate-200', !isActive);
             });
         }
         updateActiveLink();
-        window.addEventListener('scroll', updateActiveLink);
+        let scrollTicking = false;
+        window.addEventListener('scroll', () => {
+            if (scrollTicking) return;
+            scrollTicking = true;
+            window.requestAnimationFrame(() => {
+                updateActiveLink();
+                scrollTicking = false;
+            });
+        }, { passive: true });
 
         // --- Dark Mode Logic ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-        // Default to light mode - only add dark class if user explicitly saved it
+        // Default: saved choice wins; first visit follows OS preference.
         function initTheme() {
+            if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
             const savedTheme = localStorage.getItem('color-theme');
-            if (savedTheme === 'dark') {
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 document.documentElement.classList.add('dark');
                 themeToggleLightIcon.classList.remove('hidden');
                 themeToggleDarkIcon.classList.add('hidden');
@@ -81,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Function to toggle dark mode
         function toggleDarkMode() {
+            if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
             // toggle icons for desktop
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
@@ -104,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Desktop toggle
-        themeToggleBtn.addEventListener('click', toggleDarkMode);
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleDarkMode);
 
         // Mobile toggle
         const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
@@ -154,10 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 statsYears.textContent = targetYears + '+';
             }
 
-            // 2. About section (nearly X years)
+            // 2. About section (over X years)
             const aboutYears = document.getElementById('about-years');
             if (aboutYears) {
-                aboutYears.textContent = 'nearly ' + Math.ceil(targetYears) + ' years';
+                aboutYears.textContent = 'over ' + Math.floor(targetYears) + ' years';
             }
 
             // 3. Footer section (X+)
@@ -170,21 +191,45 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hero section animated counter
         const experienceCounter = document.getElementById('experience-counter');
         if (experienceCounter) {
-            const duration = 1500;
-            const frameRate = 30;
-            const totalFrames = duration / (1000 / frameRate);
-            const increment = targetYears / totalFrames;
-            let currentVal = 0;
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) {
+                experienceCounter.textContent = targetYears;
+            } else {
+                const duration = 1500;
+                const frameRate = 30;
+                const totalFrames = duration / (1000 / frameRate);
+                const increment = targetYears / totalFrames;
+                let currentVal = 0;
+                let started = false;
 
-            const timer = setInterval(() => {
-                currentVal += increment;
-                if (currentVal >= targetYears) {
-                    experienceCounter.textContent = targetYears;
-                    clearInterval(timer);
+                const startCounter = () => {
+                    if (started) return;
+                    started = true;
+                    const timer = setInterval(() => {
+                        currentVal += increment;
+                        if (currentVal >= targetYears) {
+                            experienceCounter.textContent = targetYears;
+                            clearInterval(timer);
+                        } else {
+                            experienceCounter.textContent = currentVal.toFixed(1);
+                        }
+                    }, 1000 / frameRate);
+                };
+
+                if ('IntersectionObserver' in window) {
+                    const counterObserver = new IntersectionObserver((entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                startCounter();
+                                obs.disconnect();
+                            }
+                        });
+                    }, { threshold: 0.3 });
+                    counterObserver.observe(experienceCounter);
                 } else {
-                    experienceCounter.textContent = currentVal.toFixed(1);
+                    startCounter();
                 }
-            }, 1000 / frameRate);
+            }
         }
 
         // Update all other experience year elements
@@ -224,8 +269,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             formFeedbackEl.textContent = '';
                         }, 5000);
                     } else {
-                        const data = await response.json();
-                        formFeedbackEl.textContent = data.errors?.map(e => e.message).join(", ") || "Oops! Problem submitting form.";
+                        let errMsg = "Oops! Problem submitting form.";
+                        try {
+                            const data = await response.json();
+                            errMsg = (data.errors && data.errors.map(e => e.message).join(", ")) || errMsg;
+                        } catch (parseErr) {
+                            errMsg = "Oops! Problem submitting form (status " + response.status + ").";
+                        }
+                        formFeedbackEl.textContent = errMsg;
                         formFeedbackEl.classList.add('text-red-300');
                         submitButton.innerHTML = originalButtonContent;
                         submitButton.disabled = false;
@@ -249,151 +300,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentYearEl = document.getElementById('currentYear');
         if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
 
+        // --- Scroll progress hairline ---
+        const scrollProgress = document.getElementById('scroll-progress');
+        if (scrollProgress) {
+            let progressTicking = false;
+            const updateProgress = () => {
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+                scrollProgress.style.transform = `scaleX(${ratio})`;
+                progressTicking = false;
+            };
+            window.addEventListener('scroll', () => {
+                if (progressTicking) return;
+                progressTicking = true;
+                window.requestAnimationFrame(updateProgress);
+            }, { passive: true });
+            updateProgress();
+        }
+
         // --- Back to Top Button ---
         const backToTopButton = document.getElementById('back-to-top');
         if (backToTopButton) {
+            let backToTopTicking = false;
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.remove('opacity-0', 'pointer-events-none');
-                } else {
-                    backToTopButton.classList.add('opacity-0', 'pointer-events-none');
-                }
-            });
+                if (backToTopTicking) return;
+                backToTopTicking = true;
+                window.requestAnimationFrame(() => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.remove('opacity-0', 'pointer-events-none');
+                    } else {
+                        backToTopButton.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                    backToTopTicking = false;
+                });
+            }, { passive: true });
             backToTopButton.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
-
-        // --- AI CHATBOT FUNCTIONALITY (for OpenRouter) ---
-        const chatToggle = document.getElementById('ai-chat-toggle');
-        const chatWindow = document.getElementById('ai-chat-window');
-        const chatClose = document.getElementById('ai-chat-close');
-        const chatSend = document.getElementById('ai-chat-send');
-        const chatInput = document.getElementById('ai-chat-input');
-        const chatMessages = document.getElementById('ai-chat-messages');
-
-        function toggleChat() {
-            chatWindow.classList.toggle('active');
-        }
-
-        // Close chat when clicking outside
-        document.addEventListener('click', function (event) {
-            if (chatWindow.classList.contains('active') &&
-                !chatWindow.contains(event.target) &&
-                !chatToggle.contains(event.target)) {
-                chatWindow.classList.remove('active');
-            }
-        });
-
-        function addMessage(content, isUser = false) {
-            const message = document.createElement('div');
-            message.className = `ai-message ${isUser ? 'user' : ''}`;
-            message.innerHTML = `
-        ${isUser ? '' : `
-        <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-          <i class="fas fa-robot text-indigo-600"></i>
-        </div>`}
-        <div class="ai-message-content">
-          <p>${content}</p>
-        </div>
-      `;
-            chatMessages.appendChild(message);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        async function getSonaiResponse(query) {
-            const queryLower = query.toLowerCase();
-
-            // 1. Check for personal portfolio questions first
-            if (queryLower.includes('portfolio') || queryLower.includes('experience') || queryLower.includes('background') || queryLower.includes('who are you')) {
-                const careerStart = new Date(2016, 0, 26);
-                const yearsExp = ((new Date() - careerStart) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
-                return `I'm your portfolio assistant. Joyanta is an Electrical Design & Project Engineer with nearly ${yearsExp} years of experience, specializing in MV/LV system design, substation design (AIS & GIS), and project management. He is currently the Assistant Manager at Novelty Infrastructures Limited.`;
-            }
-
-            if (queryLower.includes('education') || queryLower.includes('study') || queryLower.includes('degree')) {
-                return `Joyanta's educational background includes a B.Sc. in Electrical & Electronics Engineering from Uttara University and a Diploma in Power Technology from Mymensingh Polytechnic.`;
-            }
-
-            if (queryLower.includes('contact') || queryLower.includes('reach') || queryLower.includes('email')) {
-                return `You can reach Joyanta through: <br>• Email: jadg.power@gmail.com <br>• Phone: +8801671801435 <br>• Location: Mirpur-1, Dhaka, Bangladesh.`;
-            }
-
-            if (queryLower.includes('project')) {
-                return `Joyanta has led and contributed to many significant projects, including 5 NESCO AIS substations, major industrial designs for clients like ACI Pharma, and the supervision of 24 DESCO GIS substations. You can see more in the 'Featured Projects' section.`
-            }
-
-            // 2. If it's not a personal question, call the OpenRouter AI API
-            try {
-                const API_KEY = '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';
-
-                const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${API_KEY}`,
-                        'Content-Type': 'application/json',
-                        'HTTP-Referer': 'https://joyantadebgupta.github.io',
-                        'X-Title': 'Joyanta Deb Gupta Portfolio'
-                    },
-                    body: JSON.stringify({
-                        "model": "openai/gpt-oss-20b:free",
-                        "messages": [
-                            { "role": "user", "content": query }
-                        ]
-                    })
-                });
-
-                if (!response.ok) {
-                    console.error("API Error:", response.status, await response.text());
-                    return "I apologize, but I'm having trouble connecting to my AI brain right now. Please try again later.";
-                }
-
-                const data = await response.json();
-                const botResponse = data.choices[0].message.content;
-                return botResponse;
-
-            } catch (error) {
-                console.error("Fetch Error:", error);
-                return "I seem to be having a network issue. Please check your connection or try again.";
-            }
-        }
-
-        async function handleSend() {
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            chatInput.value = '';
-            addMessage(message, true);
-
-            const typingIndicator = document.createElement('div');
-            typingIndicator.className = 'ai-message';
-            typingIndicator.innerHTML = `
-        <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-          <i class="fas fa-robot text-indigo-600"></i>
-        </div>
-        <div class="ai-message-content">
-          <p><i class="fas fa-circle-notch fa-spin"></i> Typing...</p>
-        </div>
-      `;
-            chatMessages.appendChild(typingIndicator);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            try {
-                const response = await getSonaiResponse(message);
-                typingIndicator.remove();
-                addMessage(response);
-            } catch (error) {
-                typingIndicator.remove();
-                addMessage("I apologize, but I've encountered an error. Please try again.");
-            }
-        }
-
-        chatToggle.addEventListener('click', toggleChat);
-        chatClose.addEventListener('click', toggleChat);
-        chatSend.addEventListener('click', handleSend);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSend();
-        });
 
     } catch (error) {
         console.error('Initialization error:', error);
