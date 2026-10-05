@@ -309,10 +309,8 @@ html.dark .bg-rose-100 {
   background-color: #1e293b;
 }
 
-/* Icon colors inside colored backgrounds */
+/* Icon colors inside colored backgrounds (green/sky have their own rules below) */
 html.dark .bg-indigo-100 .text-indigo-600,
-html.dark .bg-green-100 .text-green-600,
-html.dark .bg-sky-100 .text-sky-600,
 html.dark .bg-amber-100 .text-amber-600,
 html.dark .bg-cyan-100 .text-cyan-600,
 html.dark .bg-rose-100 .text-rose-600 {
@@ -1130,25 +1128,6 @@ header.glass-strong {
   }
 }
 
-.profile-wrapper::before {
-  /* Legacy hook retired with the arch portrait — kept empty so old markup never breaks */
-  content: none;
-}
-
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
-
 .profile-image {
   position: relative;
   display: block;
@@ -1277,6 +1256,27 @@ main>section:not(#home) {
   color: var(--accent);
 }
 
+/* Skill stagger (replaces 19 inline transition-delay styles — keeps CSP style-src clean) */
+#skills-list > :nth-child(1) { transition-delay: 0s; }
+#skills-list > :nth-child(2) { transition-delay: 0.05s; }
+#skills-list > :nth-child(3) { transition-delay: 0.1s; }
+#skills-list > :nth-child(4) { transition-delay: 0.15s; }
+#skills-list > :nth-child(5) { transition-delay: 0.2s; }
+#skills-list > :nth-child(6) { transition-delay: 0.25s; }
+#skills-list > :nth-child(7) { transition-delay: 0.3s; }
+#skills-list > :nth-child(8) { transition-delay: 0.35s; }
+#skills-list > :nth-child(9) { transition-delay: 0.4s; }
+#skills-list > :nth-child(10) { transition-delay: 0.45s; }
+#skills-list > :nth-child(11) { transition-delay: 0.5s; }
+#skills-list > :nth-child(12) { transition-delay: 0.55s; }
+#skills-list > :nth-child(13) { transition-delay: 0.6s; }
+#skills-list > :nth-child(14) { transition-delay: 0.65s; }
+#skills-list > :nth-child(15) { transition-delay: 0.7s; }
+#skills-list > :nth-child(16) { transition-delay: 0.75s; }
+#skills-list > :nth-child(17) { transition-delay: 0.8s; }
+#skills-list > :nth-child(18) { transition-delay: 0.85s; }
+#skills-list > :nth-child(19) { transition-delay: 0.9s; }
+
 /* Skill Items — compact glass chips */
 .skill-item-pro {
   background: var(--glass-bg);
@@ -1327,6 +1327,10 @@ main>section:not(#home) {
 #contact {
   position: relative;
   overflow: hidden;
+}
+
+.contact-gradient {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
 }
 
 #contact h2 {
@@ -1543,23 +1547,6 @@ html.dark .fa-folder-open {
   transition-delay: 0.3s;
 }
 
-/* Float Animation */
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
-}
-
 /* ===== BACK TO TOP — floating glass orb ===== */
 #back-to-top {
   background: var(--glass-bg-strong);
@@ -1577,6 +1564,9 @@ html.dark .fa-folder-open {
 }
 
 /* ===== UTILITIES ===== */
+/* Intentional theme layer: tailwind.css is linked BEFORE style.css, so these
+   mappings deterministically win ties and wire Tailwind names to CSS variables.
+   (They were unreliable under the old Play-CDN runtime, which injected last.) */
 .bg-indigo-100 {
   background: rgba(80, 70, 229, 0.1);
 }
@@ -1615,17 +1605,13 @@ html.dark .fa-folder-open {
 /* NOTE: no html font-size override — rem units stay at the 16px base so
    Tailwind's mobile sizes render as designed */
 @media (max-width: 480px) {
-  .section-title {
-    font-size: 1.5rem !important;
-  }
-
   .hero-card {
-    padding: 1.25rem !important;
-    border-radius: 16px !important;
+    padding: 1.25rem;
+    border-radius: 16px;
   }
 
   #home {
-    padding: 4.5rem 0.5rem 1.5rem !important;
+    padding: 4.5rem 0.5rem 1.5rem;
     min-height: auto;
   }
 
@@ -1648,22 +1634,22 @@ html.dark .fa-folder-open {
 
   .btn-primary,
   .btn-secondary {
-    padding: 0.75rem 1.25rem !important;
-    font-size: 0.875rem !important;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
   }
 
   /* Contact section safety (merged here — was a second max-width:480px block at EOF) */
   #contact {
     /* Prevents the section from being wider than the phone screen */
-    width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   #contact form {
     /* Ensures the form fits inside the padding */
-    width: 100% !important;
-    padding: 1.25rem !important;
+    width: 100%;
+    padding: 1.25rem;
     /* p-5 equivalent */
   }
 
@@ -1671,8 +1657,8 @@ html.dark .fa-folder-open {
   #contact p,
   #contact span,
   #contact a {
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -1714,10 +1700,9 @@ a[href^="tel:"] {
     opacity: 1;
     transform: none;
     filter: none;
-    transition: none !important;
+    transition: none;
   }
 
-  .profile-wrapper::before,
   .animate-pulse,
   body::after,
   .marquee-track,
@@ -1726,7 +1711,7 @@ a[href^="tel:"] {
   .profile-arch::before,
   .text-gradient,
   .exp-panel.is-active {
-    animation: none !important;
+    animation: none;
   }
 
   html.scroll-smooth {
@@ -1737,11 +1722,10 @@ a[href^="tel:"] {
 /* ===== PRINT ===== */
 @media print {
 
-  .no-print,
   #contact,
   #back-to-top,
   header.fixed {
-    display: none !important;
+    display: none;
   }
 
   body {

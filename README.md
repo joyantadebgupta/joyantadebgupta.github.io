@@ -1,6 +1,6 @@
 # Joyanta Deb Gupta - Portfolio Website
 
-Professional portfolio website showcasing 10+ years of experience as an Electrical Design & Project Engineer.
+Professional portfolio website showcasing 10+ years of experience as a Senior Electrical Design Engineer.
 
 ## Website Sections
 
@@ -30,11 +30,22 @@ Professional portfolio website showcasing 10+ years of experience as an Electric
 ## Technologies
 
 - HTML5 with Microdata
-- Tailwind CSS for styling
+- Tailwind CSS (locally compiled — see Development below)
 - Vanilla JavaScript
 - Font Awesome icons
 - Google Fonts
 - Formspree for form handling (contact form)
+
+## Development
+
+```bash
+npm install          # one-time setup
+npm run build:css    # rebuild tailwind.css after changing classes
+npm run check        # syntax, braces, secrets, links, SEO basics
+```
+
+`tailwind.css` is committed (GitHub Pages serves static files only). Keep
+`style.css` linked **after** `tailwind.css` so intentional custom overrides win ties.
 
 ## Browser Support
 

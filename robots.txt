@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-# NOTE: security.txt is intentionally NOT disallowed (RFC 9116 wants it discoverable).
-
-# XML Sitemap
 Sitemap: https://joyantadebgupta.github.io/sitemap.xml

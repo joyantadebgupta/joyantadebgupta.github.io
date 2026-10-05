@@ -10,4 +10,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:css
       - run: npm run check
+      - run: git diff --exit-code -- tailwind.css || echo "::warning::tailwind.css is stale — run npm run build:css locally and commit the result"

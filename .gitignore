@@ -44,3 +44,7 @@ yarn-error.log*
 .cache/
 .npm/
 .eslintcache
+
+# Agent scratch workspaces (can be large, never part of the site)
+.kilo/
+.opencode/

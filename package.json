@@ -4,9 +4,13 @@
   "version": "1.0.0",
   "description": "Portfolio website of Joyanta Deb Gupta (static site, deployed on GitHub Pages)",
   "scripts": {
+    "build:css": "tailwindcss -i tailwind.input.css -o tailwind.css --minify",
     "check": "node --check script.js && node scripts/check.js"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }

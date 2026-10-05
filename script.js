@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     try {
+        // Activate async stylesheets (replaces inline onload handlers: keeps CSP free of 'unsafe-inline')
+        document.querySelectorAll('link[data-async-css]').forEach(link => {
+            link.media = 'all';
+        });
+
         // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -333,7 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
             expPanels.forEach(p => {
                 const show = p.id === tab.getAttribute('aria-controls');
                 p.classList.toggle('is-active', show);
-                if (show && focusPanel) p.focus({ preventScroll: true });
+                if (show) {
+                    p.removeAttribute('hidden');
+                    if (focusPanel) p.focus({ preventScroll: true });
+                } else {
+                    p.setAttribute('hidden', '');
+                }
             });
         }
 
@@ -344,6 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     let next = null;
                     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = expTabs[(idx + 1) % expTabs.length];
                     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = expTabs[(idx - 1 + expTabs.length) % expTabs.length];
+                    if (e.key === 'Home') next = expTabs[0];
+                    if (e.key === 'End') next = expTabs[expTabs.length - 1];
                     if (next) {
                         e.preventDefault();
                         next.focus();
@@ -374,7 +386,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // --- Email de-obfuscation (moved from inline script: keeps CSP free of 'unsafe-inline') ---
+        document.querySelectorAll('.obfuscated-email').forEach(function (el) {
+            const user = el.getAttribute('data-user') || 'jadg.power';
+            const domain = el.getAttribute('data-domain') || 'gmail.com';
+            const email = user + '@' + domain;
+            const link = document.createElement('a');
+            link.href = 'mailto:' + email;
+            link.textContent = email;
+            link.className = 'footer-link';
+            el.replaceWith(link);
+        });
+
     } catch (error) {
         console.error('Initialization error:', error);
     }
 });
+
+// Service worker registration (moved from inline script; runs independently of DOMContentLoaded)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(function () {
+            /* offline support unavailable — site still works online */
+        });
+    });
+}

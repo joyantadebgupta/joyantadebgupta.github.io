@@ -1,7 +1,8 @@
-const CACHE_NAME = 'joyanta-portfolio-v5';
+const CACHE_NAME = 'joyanta-portfolio-v7';
 const urlsToCache = [
     './',
     './index.html',
+    './tailwind.css',
     './style.css',
     './script.js',
     './manifest.json',
@@ -13,7 +14,19 @@ const urlsToCache = [
     './icons/icon-512.jpg',
     './icons/apple-touch-icon.jpg',
     './images/portrait.jpg',
-    './images/hero-bg.jpg'
+    './images/portrait-400.jpg',
+    './images/hero-bg.jpg',
+    './images/hero-bg-960.jpg',
+    './images/og-cover.jpg',
+    './images/project-nesco.jpg',
+    './images/project-industrial.jpg',
+    './images/project-desco.jpg',
+    './images/demo-compliance.jpg',
+    './images/demo-pgcb.jpg',
+    './images/demo-cox.jpg',
+    './images/demo-parliament.jpg',
+    './images/demo-solar.jpg',
+    './images/demo-tender.jpg'
 ];
 
 // Install event - cache same-origin files only (addAll is atomic, so keep it local).
@@ -93,7 +106,9 @@ self.addEventListener('fetch', event => {
                     caches.open(CACHE_NAME).then(cache => cache.put(request, copy)).catch(() => {});
                 }
                 return networkResponse;
-            }).catch(() => cached || offlineFallback());
+                // NOTE: subresources never fall back to HTML pages — a failed
+                // image/font must not resolve to text/html (breaks rendering).
+            }).catch(() => cached || new Response('', { status: 503, statusText: 'Offline' }));
             return cached || networkFetch;
         })
     );

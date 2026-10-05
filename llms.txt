@@ -1,12 +1,14 @@
 # Joyanta Deb Gupta - Portfolio
 
 ## About
-Joyanta Deb Gupta is a Senior Electrical Design & Project Engineer with 10+ years of expertise in MV/LV systems, substation design, and industrial electrification in Bangladesh.
+Joyanta Deb Gupta is a Senior Electrical Design Engineer with 10+ years of expertise in MV/LV systems, substation design, and industrial electrification in Bangladesh.
 
 ## Professional Summary
 - Lead electrical design and project execution for medium and low voltage systems
-- Expertise in 33/11kV AIS and GIS substation design
+- Expertise in 33/11kV AIS and GIS substation design, grid projects up to 230/132kV
 - Experience with power transformers, VCBs, and switchgear
+- Utility tender engineering: bid packages, BOQs and vendor pricing (DESCO, BPDB, PGCB)
+- IR testing programmes (HIOKI IR4056) and DIALux lighting design
 - Compliance expertise: BNBC 2020, NFPA 70/72/780
 - Auditing experience: RSC, Nirapon, Elevate, DIFE, Bureau Veritas
 
@@ -34,12 +36,14 @@ Joyanta Deb Gupta is a Senior Electrical Design & Project Engineer with 10+ year
 - DESCO 33/11 kV GIS Substations (24 Units)
 - Bangladesh National Parliament 11kV GIS Project
 - Solar Plant Electrical Design (Up to 100 MW)
+- Utility Tenders & Proposal Engineering
 - Factory Electrical Rectification (15+ Sites)
 
 ## Skills
 - Substation Design (AIS & GIS)
 - Solar Plant Design (Up to 100 MW)
 - VFD, PLC/HMI & SCADA Automation
+- IR Testing (HIOKI) & Diagnostics
 - Single Line Diagrams (SLD) & Electrical Layouts (ELD)
 - Load Flow & Short-Circuit Calculations
 - Earthing System & Lightning Protection
