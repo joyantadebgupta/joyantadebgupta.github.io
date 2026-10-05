@@ -1,0 +1,8 @@
+# Enforce LF everywhere so the CSP sha256 hash of the inline theme script
+# stays valid no matter which OS checks out the repo.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.pdf binary
+*.woff2 binary

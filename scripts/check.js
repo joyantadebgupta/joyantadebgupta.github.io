@@ -39,6 +39,17 @@ if (missing.length > 0) fail('dangling local refs: ' + missing.join(', '));
 
 // 5. SEO basics: single h1, title 30-60 chars, meta description 120-160 chars
 const html = fs.readFileSync('index.html', 'utf8');
+
+// 5b. inline theme script must match the sha256 hash allow-listed in the CSP
+{
+  const crypto = require('crypto');
+  const sm = html.match(/<script>\n([\s\S]*?)\n  <\/script>/);
+  if (!sm) fail('inline theme script not found');
+  const digest = 'sha256-' + crypto.createHash('sha256').update(sm[1], 'utf8').digest('base64');
+  const cspm = html.match(/script-src([^;]*);/);
+  if (!cspm || !cspm[1].includes(digest)) fail('CSP does not allow-list the inline theme script hash');
+  if (/unsafe-inline/.test(cspm[1])) fail('script-src still allows unsafe-inline');
+}
 const h1count = (html.match(/<h1[\s>]/g) || []).length;
 if (h1count !== 1) fail(`expected 1 h1, found ${h1count}`);
 const title = (html.match(/<title>(.*?)<\/title>/) || [])[1] || '';
