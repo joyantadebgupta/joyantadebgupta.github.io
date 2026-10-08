@@ -7,7 +7,7 @@
     Location: Mirpur-1, Dhaka, Bangladesh
 
 /* SITE */
-    Last update: 2026/10/02
+    Last update: 2026/10/08
     Language: English
     Standards: HTML5, CSS3, JavaScript
     Components: Tailwind CSS, Font Awesome, Google Fonts
@@ -20,3 +20,9 @@
     SEO: Schema.org, OpenGraph, Twitter Cards
     PWA Support: Web Manifest
     Performance: Resource Preloading, Image Lazy Loading, Compressed Local Images
+
+/* PHOTO CREDITS (representative project photos, CC BY-SA 3.0) */
+    Factory switchgear: MdE via Wikimedia Commons (CC BY-SA 3.0)
+    Parliament GIS hall: Wdwd via Wikimedia Commons (CC BY-SA 3.0)
+    Industrial transformer: Yoshieslunchbox via Wikimedia Commons (CC BY-SA 4.0)
+    AIS yards (PGCB/Cox): public domain CC0 via Wikimedia Commons

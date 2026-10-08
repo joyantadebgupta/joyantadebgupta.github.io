@@ -17,7 +17,7 @@
   <meta property="og:title" content="Joyanta Deb Gupta - Senior Electrical Design Engineer" />
   <meta property="og:description"
     content="Senior Electrical Design Engineer with 10 years expertise in MV/LV systems, substation design, industrial electrification, GIS, AIS, and power transformers." />
-  <meta property="og:image" content="https://joyantadebgupta.github.io/images/og-cover.jpg" />
+  <meta property="og:image" content="https://joyantadebgupta.github.io/images/og-cover.jpg?v=20261008" />
   <meta property="og:image:alt" content="Portrait of Joyanta Deb Gupta" />
   <!-- Update OG URL -->
   <meta property="og:url" content="https://joyantadebgupta.github.io/" />
@@ -30,10 +30,10 @@
   <meta name="twitter:title" content="Joyanta Deb Gupta - Senior Electrical Design Engineer">
   <meta name="twitter:description"
     content="Senior Electrical Design Engineer with 10 years expertise in electrical design projects, substation design, and MV/LV systems.">
-  <meta name="twitter:image" content="https://joyantadebgupta.github.io/images/og-cover.jpg">
+  <meta name="twitter:image" content="https://joyantadebgupta.github.io/images/og-cover.jpg?v=20261008">
   <meta name="twitter:image:alt" content="Portrait of Joyanta Deb Gupta">
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" href="./icons/icon-192.jpg" type="image/jpeg" sizes="192x192">
 
   <!-- Security: meta CSP is the enforced policy on GitHub Pages (.htaccess is ignored there).
@@ -52,7 +52,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="manifest" href="/manifest.json">
+  <link rel="preload" as="image" href="./images/hero-bg.jpg" media="(min-width: 641px)" fetchpriority="high">
+  <link rel="preload" as="image" href="./images/hero-bg-960.jpg" media="(max-width: 640px)" fetchpriority="high">
+  <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.jpg">
 
   <!-- Locally compiled Tailwind (npm run build:css) — no runtime CDN -->
@@ -84,6 +86,7 @@
   </noscript>
   <link rel="stylesheet" href="style.css">
   <link rel="author" href="./humans.txt">
+  <link rel="alternate" type="text/plain" href="./llms.txt" title="LLM summary">
   <!-- Set theme before first paint to avoid white flash; respects saved choice, else OS preference -->
   <script>
     (function () {
@@ -112,7 +115,7 @@
       "name": "Joyanta Deb Gupta",
       "jobTitle": "Senior Electrical Design Engineer",
       "url": "https://joyantadebgupta.github.io/",
-      "image": "https://joyantadebgupta.github.io/images/og-cover.jpg",
+      "image": "https://joyantadebgupta.github.io/images/og-cover.jpg?v=20261008",
       "sameAs": [
         "https://www.linkedin.com/in/joyantadeb",
         "https://www.facebook.com/Jadg.power"
@@ -121,52 +124,42 @@
         "@type": "Organization",
         "name": "Novelty Infrastructures Limited"
       },
-      "memberOf": [
+      "hasOccupation": [
         {
-          "@type": "EmployeeRole",
-          "roleName": "Assistant Manager – Electrical Design & Projects",
-          "startDate": "2019-11",
-          "memberOf": {
-            "@type": "Organization",
-            "name": "Novelty Infrastructures Limited"
-          }
+          "@type": "Occupation",
+          "name": "Assistant Manager – Electrical Design & Projects",
+          "occupationLocation": { "@type": "Organization", "name": "Novelty Infrastructures Limited" },
+          "experienceRequirements": "2019-11 - Present"
         },
         {
-          "@type": "EmployeeRole",
-          "roleName": "Site Engineer – Projects",
-          "startDate": "2017-09",
-          "endDate": "2019-10",
-          "memberOf": {
-            "@type": "Organization",
-            "name": "Siemens Bangladesh Limited"
-          }
+          "@type": "Occupation",
+          "name": "Site Engineer – Projects",
+          "occupationLocation": { "@type": "Organization", "name": "Siemens Bangladesh Limited" },
+          "experienceRequirements": "2017-09 - 2019-10"
         },
         {
-          "@type": "EmployeeRole",
-          "roleName": "Junior Engineer – Projects",
-          "startDate": "2016-01",
-          "endDate": "2017-08",
-          "memberOf": {
-            "@type": "Organization",
-            "name": "Novelty Engineering Corporation"
-          }
+          "@type": "Occupation",
+          "name": "Junior Engineer – Projects",
+          "occupationLocation": { "@type": "Organization", "name": "Novelty Engineering Corporation" },
+          "experienceRequirements": "2016-01 - 2017-08"
         }
       ],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Uttara University"
-      }
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Uttara University" },
+        { "@type": "EducationalOrganization", "name": "Mymensingh Polytechnic Institute" }
+      ]
     }
   ]
   </script>
 
-  <!-- Additional SEO Meta Tags -->
-  <meta name="geo.region" content="BD-13" />
-  <meta name="geo.placename" content="Dhaka" />
-  <meta name="geo.position" content="23.8103;90.4125" />
-  <meta name="ICBM" content="23.8103, 90.4125" />
+  <!-- Additional SEO Meta Tags (geo/ICBM removed: obsolete, ignored by Google) -->
 
   <!-- Same-origin images: no external preconnect needed -->
+  <noscript>
+    <style>
+      .animate-on-scroll { opacity: 1 !important; transform: none !important; filter: none !important; }
+    </style>
+  </noscript>
 
   <!-- NOTE: Google Analytics intentionally not installed. To enable GA4, add your
        Measurement ID here plus googletagmanager.com (script-src) and
@@ -187,11 +180,11 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between p-3 md:p-4">
       <!-- Logo -->
       <a href="#home" class="flex items-center gap-2 md:gap-3 transition-transform hover:scale-105 group">
-        <img src="./images/portrait.jpg" srcset="./images/portrait-400.jpg 400w, ./images/portrait.jpg 800w"
-          sizes="40px" alt="Joyanta Deb Gupta Logo" width="40" height="40"
+        <img src="./images/portrait-400.jpg"
+          sizes="48px" alt="Portrait of Joyanta Deb Gupta" width="48" height="48"
           class="header-profile-img group-hover:shadow-md transition-shadow" fetchpriority="high"
           loading="eager" decoding="async"
-          onerror="this.onerror=null;this.src='./icons/icon-192.jpg';" />
+          data-fallback="./icons/icon-192.jpg" />
         <span
           class="font-handwriting header-name font-bold text-indigo-600 group-hover:text-indigo-700 transition-colors whitespace-nowrap">Joyanta</span>
       </a>
@@ -221,49 +214,49 @@
         </nav>
 
         <!-- Dark Mode Toggle (Desktop) -->
-        <button id="theme-toggle"
-          class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+        <button id="theme-toggle" aria-pressed="false"
+          class="theme-toggle p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all active:scale-90"
           aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon text-lg" id="theme-toggle-dark-icon"></i>
-          <i class="fas fa-sun text-lg hidden" id="theme-toggle-light-icon"></i>
+          <i class="fas fa-moon text-lg theme-icon" id="theme-toggle-dark-icon" aria-hidden="true"></i>
+          <i class="fas fa-sun text-lg theme-icon hidden" id="theme-toggle-light-icon" aria-hidden="true"></i>
         </button>
       </div>
 
       <!-- Mobile: Dark Mode Toggle + Hamburger Menu -->
       <div class="flex items-center gap-3 md:hidden">
-        <button id="theme-toggle-mobile"
-          class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none transition-colors"
+        <button id="theme-toggle-mobile" aria-pressed="false"
+          class="theme-toggle p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all active:scale-90"
           aria-label="Toggle Dark Mode">
-          <i class="fas fa-moon text-lg" id="theme-toggle-dark-icon-mobile"></i>
-          <i class="fas fa-sun text-lg hidden" id="theme-toggle-light-icon-mobile"></i>
+          <i class="fas fa-moon text-lg theme-icon" id="theme-toggle-dark-icon-mobile" aria-hidden="true"></i>
+          <i class="fas fa-sun text-lg theme-icon hidden" id="theme-toggle-light-icon-mobile" aria-hidden="true"></i>
         </button>
         <button id="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu"
           class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md p-2 transition-colors">
-          <i class="fas fa-bars text-2xl"></i>
+          <i aria-hidden="true" class="fas fa-bars text-2xl"></i>
         </button>
       </div>
     </div>
     <nav id="mobile-menu"
-      class="md:hidden bg-white dark:bg-slate-900 shadow-xl hidden flex-col space-y-2 p-5 border-t border-slate-200 dark:border-slate-800"
+      class="md:hidden hidden flex-col gap-1 p-4"
       aria-label="Mobile navigation">
       <a href="#home"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Home</a>
+        class="nav-link mobile-link"><i class="fas fa-house" aria-hidden="true"></i>Home</a>
       <a href="#about"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">About</a>
+        class="nav-link mobile-link"><i class="fas fa-user" aria-hidden="true"></i>About</a>
       <a href="#projects"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Projects</a>
+        class="nav-link mobile-link"><i class="fas fa-folder-open" aria-hidden="true"></i>Projects</a>
       <a href="#experience"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Experience</a>
+        class="nav-link mobile-link"><i class="fas fa-briefcase" aria-hidden="true"></i>Experience</a>
       <a href="#education"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Education</a>
+        class="nav-link mobile-link"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</a>
       <a href="#expertise"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Expertise</a>
+        class="nav-link mobile-link"><i class="fas fa-bolt" aria-hidden="true"></i>Expertise</a>
       <a href="#trainings"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Trainings</a>
+        class="nav-link mobile-link"><i class="fas fa-certificate" aria-hidden="true"></i>Trainings</a>
       <a href="#interests"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Interests</a>
+        class="nav-link mobile-link"><i class="fas fa-heart" aria-hidden="true"></i>Interests</a>
       <a href="#contact"
-        class="nav-link block py-3 px-4 rounded-md text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 transition-colors">Contact</a>
+        class="nav-link mobile-link"><i class="fas fa-envelope" aria-hidden="true"></i>Contact</a>
     </nav>
   </header>
 
@@ -340,23 +333,31 @@
               </div>
             </div>
 
-            <!-- Profile Image -->
+            <!-- Profile ID Card -->
             <div class="lg:w-2/5 flex justify-center order-1 lg:order-2">
-              <div class="profile-stage">
-                <div class="profile-arch">
+              <div class="id-hang">
+                <div class="id-lanyard" aria-hidden="true"><span></span><span></span></div>
+                <div class="id-join" aria-hidden="true"><span class="id-loop"></span><span class="id-ring"></span></div>
+                <div class="id-card glass-strong">
+                  <div class="id-slot" aria-hidden="true"></div>
+                  <p class="id-brand">Novelty Infrastructures</p>
                   <img src="./images/portrait.jpg" srcset="./images/portrait-400.jpg 400w, ./images/portrait.jpg 800w"
-                    sizes="(max-width: 640px) 192px, (max-width: 1024px) 256px, 320px"
-                    alt="Joyanta Deb Gupta - Senior Electrical Engineer" width="320" height="320"
-                    class="profile-image w-40 h-52 sm:w-56 sm:h-72 lg:w-72 lg:h-80 object-cover" loading="eager"
+                    sizes="(max-width: 640px) 240px, 280px"
+                    alt="Joyanta Deb Gupta - Senior Electrical Engineer" width="280" height="320"
+                    class="id-photo" loading="eager"
                     decoding="async" fetchpriority="high"
-                    onerror="this.onerror=null;this.src='./icons/icon-192.jpg';">
+                    data-fallback="./icons/icon-192.jpg">
+                  <p class="id-name">Joyanta Deb Gupta</p>
+                  <p class="id-role">Sr. Electrical Design Engineer</p>
+                  <p class="id-org">Engineering Department · Dhaka</p>
+                  <div class="id-meta" aria-hidden="true">
+                    <span>MV / LV</span>
+                    <span>AIS · GIS</span>
+                  </div>
+                  <div class="id-barcode" aria-hidden="true"></div>
+                  <div class="id-holo" aria-hidden="true"></div>
                 </div>
-                <div class="float-badge badge-tr" aria-hidden="true">
-                  <strong>10.7+</strong><span>years</span>
-                </div>
-                <div class="float-badge badge-bl" aria-hidden="true">
-                  <strong>50+</strong><span>projects</span>
-                </div>
+                <div class="id-shadow" aria-hidden="true"></div>
               </div>
             </div>
           </div>
@@ -383,11 +384,11 @@
         <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
           <div class="w-full md:w-1/3 flex justify-center md:justify-start flex-shrink-0">
             <div class="relative w-56 md:w-full md:max-w-sm">
-              <img src="./images/portrait.jpg" srcset="./images/portrait-400.jpg 400w, ./images/portrait.jpg 800w"
+              <img src="./images/portrait-400.jpg"
                 sizes="(max-width: 768px) 192px, 320px" alt="Portrait of Joyanta Deb Gupta"
                 width="400" height="400"
                 class="rounded-xl shadow-lg w-full h-auto" loading="lazy" decoding="async"
-                onerror="this.onerror=null;this.src='./icons/icon-192.jpg';">
+                data-fallback="./icons/icon-192.jpg">
             </div>
           </div>
 
@@ -454,7 +455,7 @@
               sizes="(max-width: 640px) 90vw, 400px" alt="NESCO 33/11kV AIS substation project site"
               width="600" height="338"
               class="w-full h-full object-cover" loading="lazy" decoding="async"
-              onerror="this.onerror=null;this.src='./images/project-industrial.jpg';">
+              data-fallback="./images/project-industrial.jpg">
           </div>
           <div class="p-4">
             <h3 class="text-base md:text-lg font-semibold text-indigo-700 mb-1.5" itemprop="name">NESCO 33/11 kV AIS
@@ -472,10 +473,10 @@
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
             <img src="./images/project-industrial.jpg" srcset="./images/project-industrial-640.jpg 640w, ./images/project-industrial.jpg 1280w"
-              sizes="(max-width: 640px) 90vw, 400px" alt="Industrial substation design installation"
+              sizes="(max-width: 640px) 90vw, 400px" alt="Large power transformer with HV bushings in an industrial substation yard"
               width="600" height="450"
               class="w-full h-full object-cover" loading="lazy" decoding="async"
-              onerror="this.onerror=null;this.src='./images/project-nesco.jpg';">
+              data-fallback="./images/project-nesco.jpg">
           </div>
           <div class="p-4">
             <h3 class="text-base md:text-lg font-semibold text-indigo-700 mb-1.5" itemprop="name">Industrial
@@ -483,10 +484,10 @@
             <p class="text-xs md:text-sm text-slate-600 mb-1"><span class="font-medium">Role:</span> Lead Design
               Engineer</p>
             <p class="text-xs md:text-sm text-slate-600 mb-2"><span class="font-medium">Clients:</span> ACI Pharma,
-              Epic Group, Ananta Denim, Youngone, YKK &amp; more</p>
+              Epic Group, Ananta Denim, Youngone, YKK, World Ye &amp; more</p>
             <p class="text-slate-500 text-xs md:text-sm leading-relaxed mb-3" itemprop="description">
-              Delivered designs for ACI Pharma, Epic Group (EGMCL, GTL, PGCL), and others. Ensured compliance with BNBC,
-              NFPA, and audits by Walmart, RSC, and Bureau Veritas.
+              Delivered designs for ACI Pharma, Epic Group (EGMCL-1/2/7), YKK 4000 kVA proposal, Youngone Buildings
+              12–18 and others. Ensured compliance with BNBC, NFPA, and audits by Walmart, RSC, and Bureau Veritas.
             </p>
           </div>
         </div>
@@ -497,7 +498,7 @@
               sizes="(max-width: 640px) 90vw, 400px" alt="DESCO 33/11kV GIS substation panels"
               width="600" height="450"
               class="w-full h-full object-cover" loading="lazy" decoding="async"
-              onerror="this.onerror=null;this.src='./images/project-nesco.jpg';">
+              data-fallback="./images/project-nesco.jpg">
           </div>
           <div class="p-4">
             <h3 class="text-base md:text-lg font-semibold text-indigo-700 mb-1.5" itemprop="name">DESCO 33/11 kV GIS
@@ -514,8 +515,8 @@
         <div class="project-card glass overflow-hidden animate-on-scroll"
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
-            <img src="./images/demo-compliance.jpg" srcset="./images/demo-compliance-640.jpg 640w, ./images/demo-compliance.jpg 1200w" sizes="(max-width: 640px) 90vw, 400px" alt="Factory electrical works (illustrative photo)"
-              width="600" height="400"
+            <img src="./images/demo-compliance.jpg" srcset="./images/demo-compliance-640.jpg 640w, ./images/demo-compliance.jpg 1024w" sizes="(max-width: 640px) 90vw, 400px" alt="Indoor distribution switchgear lineup in a factory electrical room"
+              width="600" height="450"
               class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-4">
@@ -523,18 +524,19 @@
               Rectification (15+ Sites)</h3>
             <p class="text-xs md:text-sm text-slate-600 mb-1"><span class="font-medium">Role:</span> Junior Engineer</p>
             <p class="text-xs md:text-sm text-slate-600 mb-2"><span class="font-medium">Sites:</span> Square Denim,
-              Xin Chang Shoes, Regency Garments &amp; more</p>
+              Xin Chang Shoes, World Ye, Kenpark, Regency &amp; more</p>
             <p class="text-slate-500 text-xs md:text-sm leading-relaxed mb-3" itemprop="description">
-              Electrical rectification for 15+ export-oriented garment factories. Prepared SLDs &amp; ELDs in AutoCAD
-              and enabled successful Accord, Alliance and Bureau Veritas audits.
+              Electrical rectification for 15+ export-oriented factories incl. FDS, LT panels and IR programmes
+              (World Ye, Kenpark). Prepared SLDs &amp; ELDs in AutoCAD and enabled successful Accord, Alliance
+              and Bureau Veritas audits.
             </p>
           </div>
         </div>
         <div class="project-card glass overflow-hidden animate-on-scroll delay-100ms"
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
-            <img src="./images/demo-pgcb.jpg" srcset="./images/demo-pgcb-640.jpg 640w, ./images/demo-pgcb.jpg 1200w" sizes="(max-width: 640px) 90vw, 400px" alt="Grid substation installation works (illustrative photo)"
-              width="600" height="400"
+            <img src="./images/demo-pgcb.jpg" srcset="./images/demo-pgcb-640.jpg 640w, ./images/demo-pgcb.jpg 1280w" sizes="(max-width: 640px) 90vw, 400px" alt="230kV outdoor AIS switchyard with gantries and power transformers (representative photo)"
+              width="600" height="450"
               class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-4">
@@ -551,8 +553,8 @@
         <div class="project-card glass overflow-hidden animate-on-scroll delay-200ms"
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
-            <img src="./images/demo-cox.jpg" srcset="./images/demo-cox-640.jpg 640w, ./images/demo-cox.jpg 1200w" sizes="(max-width: 640px) 90vw, 400px" alt="Substation upgradation works at dusk (illustrative photo)"
-              width="600" height="400"
+            <img src="./images/demo-cox.jpg" srcset="./images/demo-cox-640.jpg 640w, ./images/demo-cox.jpg 1280w" sizes="(max-width: 640px) 90vw, 400px" alt="132kV AIS switchyard with power transformers during upgradation (representative photo)"
+              width="600" height="450"
               class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-4">
@@ -569,7 +571,7 @@
         <div class="project-card glass overflow-hidden animate-on-scroll"
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
-            <img src="./images/demo-parliament.jpg" srcset="./images/demo-parliament-640.jpg 640w, ./images/demo-parliament.jpg 1280w" sizes="(max-width: 640px) 90vw, 400px" alt="Substation architectural works (illustrative photo)"
+            <img src="./images/demo-parliament.jpg" srcset="./images/demo-parliament-640.jpg 640w, ./images/demo-parliament.jpg 1024w" sizes="(max-width: 640px) 90vw, 400px" alt="Indoor SF6 gas-insulated switchgear lineup, as used in the Parliament GIS hall (representative photo)"
               width="600" height="450"
               class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
@@ -587,7 +589,7 @@
         <div class="project-card glass overflow-hidden animate-on-scroll delay-100ms"
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
-            <img src="./images/demo-solar.jpg" srcset="./images/demo-solar-640.jpg 640w, ./images/demo-solar.jpg 1200w" sizes="(max-width: 640px) 90vw, 400px" alt="Solar panel arrays (illustrative photo)"
+            <img src="./images/demo-solar.jpg" srcset="./images/demo-solar-640.jpg 640w, ./images/demo-solar.jpg 1200w" sizes="(max-width: 640px) 90vw, 400px" alt="Solar panel arrays"
               width="600" height="400"
               class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
@@ -597,8 +599,8 @@
             <p class="text-xs md:text-sm text-slate-600 mb-1"><span class="font-medium">Role:</span> Electrical Design Lead</p>
             <p class="text-xs md:text-sm text-slate-600 mb-2"><span class="font-medium">Scope:</span> LV to 33kV evacuation</p>
             <p class="text-slate-500 text-xs md:text-sm leading-relaxed mb-3" itemprop="description">
-              Inverter integration, protection philosophy, evacuation planning and compliance documentation for
-              utility-scale solar.
+              Inverter integration, protection philosophy and evacuation planning — incl. TBEA Sonagazi 220MW EPC
+              bid and BPDB 1.5–5 MWp solar tenders.
             </p>
           </div>
         </div>
@@ -606,7 +608,7 @@
           itemprop="hasPart" itemscope itemtype="http://schema.org/CreativeWork">
           <div class="project-image-placeholder flex items-center justify-center">
             <img src="./images/demo-tender.jpg" srcset="./images/demo-tender-640.jpg 640w, ./images/demo-tender.jpg 1200w"
-              sizes="(max-width: 640px) 90vw, 400px" alt="Tender documentation and bid preparation works (illustrative photo)"
+              sizes="(max-width: 640px) 90vw, 400px" alt="Tender documentation and bid preparation works"
               width="600" height="400"
               class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
@@ -614,17 +616,19 @@
             <h3 class="text-base md:text-lg font-semibold text-indigo-700 mb-1.5" itemprop="name">Utility Tenders
               &amp; Proposal Engineering</h3>
             <p class="text-xs md:text-sm text-slate-600 mb-1"><span class="font-medium">Role:</span> Techno-Commercial Proposals</p>
-            <p class="text-xs md:text-sm text-slate-600 mb-2"><span class="font-medium">Clients:</span> DESCO, BPDB, PGCB, DPDC, CEEC &amp; more</p>
+            <p class="text-xs md:text-sm text-slate-600 mb-2"><span class="font-medium">Clients:</span> DESCO, BPDB, PGCB, CEEC, CCCE, SinoSteel &amp; more</p>
             <p class="text-slate-500 text-xs md:text-sm leading-relaxed mb-3" itemprop="description">
-              Bid packages with BOQs and vendor pricing — incl. PGCB 400kV erection RFQs, NESCO GIS bids and the
-              TBEA 220MW solar EPC.
+              Bid packages with BOQs and vendor pricing — incl. PGCB grid substation erection RFQs, NESCO GIS bids,
+              TBEA 220MW solar EPC, Unitex 230/33kV GIS and GAS1 BEZA-approved DIALux master plan.
             </p>
           </div>
         </div>
-        <div class="bento-cta glass overflow-hidden animate-on-scroll delay-200ms lg:col-span-3">
+        <div class="bento-cta glass overflow-hidden animate-on-scroll delay-200ms lg:col-span-2">
           <div class="bento-cta-glow" aria-hidden="true"></div>
-          <h3>Have a substation or industrial project in mind?</h3>
-          <p>From SLD to commissioning — let's scope it together.</p>
+          <div class="bento-cta-text">
+            <h3>Have a substation or industrial project in mind?</h3>
+            <p>From SLD to commissioning — let's scope it together.</p>
+          </div>
           <a href="#contact" class="btn-primary">Start a Conversation <i class="fas fa-arrow-right"
               aria-hidden="true"></i></a>
         </div>
@@ -689,11 +693,12 @@
                 <li>Led 5 NESCO 33/11kV AIS Substations (100% on schedule).</li>
                 <li>Commissioned 10 Power Transformers (16/20 MVA) & 23 Outdoor VCBs.</li>
                 <li>Installed 90 units of 11kV Indoor AIS Panels.</li>
-                <li>Delivered designs for 50+ clients (ACI, Epic, Ananta Denim, etc.).</li>
+                <li>Delivered designs for 50+ clients (ACI, Epic, Ananta Denim, Matin Spinning, World Ye, YKK, Youngone, etc.).</li>
                 <li>Leading PGCB Aricha 230/132/33kV grid substation installation & pre-commissioning.</li>
                 <li>Closed Cox's Bazar 132/33kV AIS upgradation with 3 high-capacity transformers.</li>
-                <li>Prepared utility bid packages (DESCO, BPDB, PGCB 400kV RFQs, TBEA 220MW solar EPC).</li>
-                <li>Ran IR testing programmes (HIOKI IR4056) with standardized reporting.</li>
+                <li>Prepared utility bid packages (DESCO, BPDB solar, PGCB grid substation RFQs, TBEA 220MW solar EPC, Unitex 230/33kV GIS, Weber 132/33kV).</li>
+                <li>Ran IR testing programmes (HIOKI IR4056) — 60-sec readings, temperature correction, min. 5 MΩ acceptance.</li>
+                <li>Designed fire detection & alarm with sprinkler/hydrant coordination (World Ye, Xin Chang); ESE/LPS rollout for 7+ sites incl. Mirsharai Water Treatment Plant.</li>
               </ul>
             </div>
           </div>
@@ -771,7 +776,7 @@
           class="glass rounded-xl p-4 md:p-6 text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-on-scroll"
           itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
           <div class="p-2.5 md:p-3 inline-block bg-indigo-100 rounded-full mb-3">
-            <i class="fas fa-graduation-cap text-2xl md:text-3xl text-indigo-600"></i>
+            <i aria-hidden="true" class="fas fa-graduation-cap text-2xl md:text-3xl text-indigo-600"></i>
           </div>
           <h3 class="text-base md:text-lg font-semibold text-indigo-700 mb-1" itemprop="name">B.Sc. in Electrical &
             Electronics Engineering</h3>
@@ -782,7 +787,7 @@
           class="glass rounded-xl p-4 md:p-6 text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-on-scroll delay-100ms"
           itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
           <div class="p-2.5 md:p-3 inline-block bg-indigo-100 rounded-full mb-3">
-            <i class="fas fa-award text-2xl md:text-3xl text-indigo-600"></i>
+            <i aria-hidden="true" class="fas fa-award text-2xl md:text-3xl text-indigo-600"></i>
           </div>
           <h3 class="text-base md:text-lg font-semibold text-indigo-700 mb-1" itemprop="name">Diploma in Engineering
             (Power Technology)</h3>
@@ -793,23 +798,23 @@
           class="glass rounded-xl p-4 md:p-6 text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-on-scroll delay-200ms"
           itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
           <div class="p-2.5 md:p-3 inline-block bg-green-100 rounded-full mb-3">
-            <i class="fas fa-school text-2xl md:text-3xl text-green-600"></i>
+            <i aria-hidden="true" class="fas fa-school text-2xl md:text-3xl text-green-600"></i>
           </div>
           <h3 class="text-base md:text-lg font-semibold text-green-700 mb-1" itemprop="name">Higher Secondary
             Certificate (Business Studies)</h3>
           <p class="text-slate-600 text-xs md:text-sm mb-1">Government Bangla College</p>
-          <p class="text-slate-500 text-xs">Year: 2010 | GPA: 3.60/5.00</p>
+          <p class="text-slate-500 text-xs">Year: 2010 | GPA: 3.60/5.00 — foundation before switching to engineering</p>
         </div>
         <div
           class="glass rounded-xl p-4 md:p-6 text-center transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-on-scroll delay-300ms"
           itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
           <div class="p-2.5 md:p-3 inline-block bg-sky-100 rounded-full mb-3">
-            <i class="fas fa-book text-2xl md:text-3xl text-sky-600"></i>
+            <i aria-hidden="true" class="fas fa-book text-2xl md:text-3xl text-sky-600"></i>
           </div>
           <h3 class="text-base md:text-lg font-semibold text-sky-700 mb-1" itemprop="name">Secondary School Certificate
             (Business Studies)</h3>
           <p class="text-slate-600 text-xs md:text-sm mb-1">Chiriakhana Botanical High School</p>
-          <p class="text-slate-500 text-xs">Year: 2008 | GPA: 4.38/5.00</p>
+          <p class="text-slate-500 text-xs">Year: 2008 | GPA: 4.38/5.00 — foundation before switching to engineering</p>
         </div>
       </div>
     </section>
@@ -823,14 +828,14 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-bolt text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-bolt text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">33/11kV to 230kV AIS & GIS Substation Design</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-project-diagram text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-project-diagram text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">End-to-End Project Lifecycle (Tender to
             Handover)</span>
@@ -838,7 +843,7 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-sitemap text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-sitemap text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Single Line Diagrams (SLD) & Electrical Layouts
             (ELD)</span>
@@ -846,7 +851,7 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-charging-station text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-charging-station text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Earthing System & Lightning Protection
             (LPS)</span>
@@ -854,14 +859,14 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-check-double text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-check-double text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Compliance: BNBC 2020, NFPA 70/72/780</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-clipboard-check text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-clipboard-check text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Audits: RSC, Nirapon, Elevate, DIFE, Bureau
             Veritas</span>
@@ -869,7 +874,7 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-file-invoice-dollar text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-file-invoice-dollar text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">BOQ Preparation, Cost Estimation & Vendor
             Sourcing</span>
@@ -877,21 +882,21 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-route text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-route text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
-          <span class="text-slate-700 font-medium text-base lg:text-lg">Busbar Trunking (BBT) Systems</span>
+          <span class="text-slate-700 font-medium text-base lg:text-lg">LT Panels, ACB / MCCB & BBT Systems</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-drafting-compass text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-drafting-compass text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">General Arrangement (GA) Drawings</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-shield-halved text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-shield-halved text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">EHS Plan Development & Zero Incident
             Record</span>
@@ -899,63 +904,63 @@
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-users-cog text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-users-cog text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Subcontractor & Team Leadership</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-fire-extinguisher text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-fire-extinguisher text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Fire Detection & Safety Integration</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-file-powerpoint text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-file-powerpoint text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Technical Documentation & Reporting</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-handshake text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-handshake text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Tender Participation (EGP, OSTEM)</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-calculator text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-calculator text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
-          <span class="text-slate-700 font-medium text-base lg:text-lg">Load Flow & Short-Circuit Calculations</span>
+          <span class="text-slate-700 font-medium text-base lg:text-lg">Load Flow, Short-Circuit & Voltage-Drop Calculations</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-solar-panel text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-solar-panel text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">Solar Plant Design (Up to 100 MW)</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-microchip text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-microchip text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">VFD, PLC/HMI & SCADA Automation</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-plug-circle-check text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-plug-circle-check text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">IR Testing (HIOKI) & Diagnostics</span>
         </div>
         <div
           class="skill-item-pro glass flex items-center gap-x-4 p-4 transition-all duration-300 cursor-default animate-on-scroll">
           <div class="bg-indigo-100 p-3 rounded-lg">
-            <i class="fas fa-lightbulb text-indigo-600 text-2xl w-7 text-center"></i>
+            <i aria-hidden="true" class="fas fa-lightbulb text-indigo-600 text-2xl w-7 text-center"></i>
           </div>
           <span class="text-slate-700 font-medium text-base lg:text-lg">DIALux Lighting & ESE LPS Design</span>
         </div>
@@ -970,8 +975,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <div class="glass rounded-xl p-4 md:p-5 transition-all duration-300 hover:shadow-2xl animate-on-scroll">
           <div class="flex items-start gap-3">
-            <div class="bg-indigo-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i
-                class="fas fa-chalkboard-teacher text-xl text-indigo-600"></i></div>
+            <div class="bg-indigo-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i aria-hidden="true"                 class="fas fa-chalkboard-teacher text-xl text-indigo-600"></i></div>
             <div>
               <h3 class="text-lg font-semibold text-indigo-700 mb-1">SITRUST (Occupational Safety)</h3>
               <p class="text-slate-600 font-medium mb-1 text-xs">Siemens Bangladesh (2019)</p>
@@ -981,8 +985,7 @@
         <div
           class="glass rounded-xl p-4 md:p-5 transition-all duration-300 hover:shadow-2xl animate-on-scroll delay-50ms">
           <div class="flex items-start gap-3">
-            <div class="bg-indigo-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i
-                class="fas fa-industry text-xl text-indigo-600"></i></div>
+            <div class="bg-indigo-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i aria-hidden="true"                 class="fas fa-industry text-xl text-indigo-600"></i></div>
             <div>
               <h3 class="text-lg font-semibold text-indigo-700 mb-1">Automotive Electrical Internship</h3>
               <p class="text-slate-600 font-medium mb-1 text-xs">ECM Auto Center Ltd (2014)</p>
@@ -992,8 +995,7 @@
         <div
           class="glass rounded-xl p-4 md:p-5 transition-all duration-300 hover:shadow-2xl animate-on-scroll delay-100ms">
           <div class="flex items-start gap-3">
-            <div class="bg-sky-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i
-                class="fas fa-brain text-xl text-sky-600"></i></div>
+            <div class="bg-sky-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i aria-hidden="true"                 class="fas fa-brain text-xl text-sky-600"></i></div>
             <div>
               <h3 class="text-lg font-semibold text-sky-700 mb-1">PLC Fundamentals</h3>
               <p class="text-slate-600 font-medium mb-1 text-xs">Gobeshona Learning Academy (2025)</p>
@@ -1004,8 +1006,7 @@
         <div
           class="glass rounded-xl p-4 md:p-5 transition-all duration-300 hover:shadow-2xl animate-on-scroll delay-150ms">
           <div class="flex items-start gap-3">
-            <div class="bg-amber-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i
-                class="fas fa-drafting-compass text-xl text-amber-600"></i></div>
+            <div class="bg-amber-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i aria-hidden="true"                 class="fas fa-drafting-compass text-xl text-amber-600"></i></div>
             <div>
               <h3 class="text-lg font-semibold text-amber-700 mb-1">AutoCAD Electrical Design</h3>
               <p class="text-slate-600 font-medium mb-1 text-xs">Gobeshona Learning Academy (2025)</p>
@@ -1016,8 +1017,7 @@
         <div
           class="glass rounded-xl p-4 md:p-5 transition-all duration-300 hover:shadow-2xl animate-on-scroll delay-200ms">
           <div class="flex items-start gap-3">
-            <div class="bg-emerald-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i
-                class="fas fa-file-invoice-dollar text-xl text-emerald-600"></i></div>
+            <div class="bg-emerald-100 p-2.5 rounded-lg mt-1 flex-shrink-0"> <i aria-hidden="true"                 class="fas fa-file-invoice-dollar text-xl text-emerald-600"></i></div>
             <div>
               <h3 class="text-lg font-semibold text-emerald-700 mb-1">VAT & Tax Management</h3>
               <p class="text-slate-600 font-medium mb-1 text-xs">LCBS Dhaka (2025)</p>
@@ -1032,31 +1032,36 @@
         <h2 class="section-title">Personal Interests</h2>
         <p class="text-base text-slate-500">A few things I enjoy outside of work.</p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
         <div
           class="interest-item glass p-4 md:p-6 text-center transition-all duration-300 hover:shadow-indigo-500/30 hover:scale-105 animate-on-scroll">
-          <i class="fas fa-film text-3xl md:text-4xl text-indigo-500 mb-2"></i>
+          <i aria-hidden="true" class="fas fa-film text-3xl md:text-4xl text-indigo-500 mb-2"></i>
           <p class="font-medium text-slate-700 text-sm">Movies</p>
         </div>
         <div
           class="interest-item glass p-4 md:p-6 text-center transition-all duration-300 hover:shadow-indigo-500/30 hover:scale-105 animate-on-scroll delay-50ms">
-          <i class="fas fa-music text-3xl md:text-4xl text-indigo-500 mb-2"></i>
+          <i aria-hidden="true" class="fas fa-music text-3xl md:text-4xl text-indigo-500 mb-2"></i>
           <p class="font-medium text-slate-700 text-sm">Music</p>
         </div>
         <div
           class="interest-item glass p-4 md:p-6 text-center transition-all duration-300 hover:shadow-indigo-500/30 hover:scale-105 animate-on-scroll delay-100ms">
-          <i class="fas fa-book-open-reader text-3xl md:text-4xl text-indigo-500 mb-2"></i>
+          <i aria-hidden="true" class="fas fa-book-open-reader text-3xl md:text-4xl text-indigo-500 mb-2"></i>
           <p class="font-medium text-slate-700 text-sm">Reading</p>
         </div>
         <div
           class="interest-item glass p-4 md:p-6 text-center transition-all duration-300 hover:shadow-indigo-500/30 hover:scale-105 animate-on-scroll delay-150ms">
-          <i class="fas fa-plane-departure text-3xl md:text-4xl text-indigo-500 mb-2"></i>
+          <i aria-hidden="true" class="fas fa-plane-departure text-3xl md:text-4xl text-indigo-500 mb-2"></i>
           <p class="font-medium text-slate-700 text-sm">Traveling</p>
         </div>
         <div
           class="interest-item glass p-4 md:p-6 text-center transition-all duration-300 hover:shadow-indigo-500/30 hover:scale-105 animate-on-scroll delay-200ms">
-          <i class="fas fa-users text-3xl md:text-4xl text-indigo-500 mb-2"></i>
+          <i class="fas fa-users text-3xl md:text-4xl text-indigo-500 mb-2" aria-hidden="true"></i>
           <p class="font-medium text-slate-700 text-sm">Social Activities</p>
+        </div>
+        <div
+          class="interest-item glass p-4 md:p-6 text-center transition-all duration-300 hover:shadow-indigo-500/30 hover:scale-105 animate-on-scroll delay-300ms">
+          <i class="fas fa-laptop-code text-3xl md:text-4xl text-indigo-500 mb-2" aria-hidden="true"></i>
+          <p class="font-medium text-slate-700 text-sm">AI Vibe Coding</p>
         </div>
       </div>
     </section>
@@ -1088,7 +1093,7 @@
               </p>
               <p class="flex items-center text-white/90">
                 <i class="fas fa-envelope w-5 text-pink-300 flex-shrink-0" aria-hidden="true"></i>
-                <span class="ml-2">Use the form — I reply fast</span>
+                <a href="mailto:jadg.power@gmail.com" class="ml-2 hover:text-white transition-colors">jadg.power@gmail.com</a>
               </p>
             </div>
             <div class="flex gap-3 mt-4 pt-4 border-t border-white/20">
@@ -1106,39 +1111,35 @@
           <form id="contact-form" action="https://formspree.io/f/mnnplppz" method="POST"
             class="lg:col-span-3 w-full rounded-xl p-4 md:p-5 bg-white/10 backdrop-blur-md border border-white/20">
 
-            <input type="hidden" name="_replyto" value="jadg.power@gmail.com">
             <input type="hidden" name="_next" value="https://joyantadebgupta.github.io/#contact">
             <input type="hidden" name="_subject" value="New Contact Form Submission">
             <input type="hidden" name="_template" value="table">
-            <!-- Honeypot: bots fill this, humans don't -->
-            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <!-- Honeypot: off-screen (not display:none) so bots still fill it -->
+            <input type="text" name="_gotcha" class="hp-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label for="fullName" class="block text-xs font-semibold text-white/90 mb-1">Full Name</label>
-                <input type="text" id="fullName" name="name" required autocomplete="name" placeholder="Your name"
-                  aria-describedby="form-feedback"
+                <input type="text" id="fullName" name="name" required autocomplete="name" placeholder="Your name" maxlength="100"
                   class="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-sm">
               </div>
 
               <div>
                 <label for="emailAddress" class="block text-xs font-semibold text-white/90 mb-1">Email Address</label>
-                <input type="email" id="emailAddress" name="email" required autocomplete="email" placeholder="your@email.com"
-                  aria-describedby="form-feedback"
+                <input type="email" id="emailAddress" name="_replyto" required autocomplete="email" placeholder="your@email.com" maxlength="254"
                   class="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-sm">
               </div>
 
               <div class="sm:col-span-2">
                 <label for="subject" class="block text-xs font-semibold text-white/90 mb-1">Subject</label>
-                <input type="text" id="subject" name="subject" required autocomplete="off" placeholder="What's this about?"
-                  aria-describedby="form-feedback"
+                <input type="text" id="subject" name="subject" required autocomplete="off" placeholder="What's this about?" maxlength="150"
                   class="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-sm">
               </div>
 
               <div class="sm:col-span-2">
                 <label for="message" class="block text-xs font-semibold text-white/90 mb-1">Your Message</label>
-                <textarea id="message" name="message" rows="3" required placeholder="Tell me about your project..."
-                  class="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all resize-none text-sm"></textarea>
+                <textarea id="message" name="message" rows="5" required maxlength="2000" placeholder="Tell me about your project..."
+                  class="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all resize-y text-sm"></textarea>
               </div>
             </div>
 
@@ -1148,7 +1149,7 @@
                 <span>Send Message</span>
                 <i class="fas fa-paper-plane" aria-hidden="true"></i>
               </button>
-              <p id="form-feedback" class="text-sm font-medium h-4" role="status" aria-live="polite"></p>
+              <p id="form-feedback" class="text-sm font-medium min-h-[1.25rem]" role="status" aria-live="polite"></p>
             </div>
           </form>
         </div>
@@ -1160,10 +1161,10 @@
     class="glass text-slate-600 dark:text-slate-400 pt-6 pb-4 px-4 sm:px-6 lg:px-8 border-t border-white/40 dark:border-white/10">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-6">
       <div>
-        <img src="./images/portrait.jpg" srcset="./images/portrait-400.jpg 400w, ./images/portrait.jpg 800w"
+        <img src="./images/portrait-400.jpg"
           sizes="64px" alt="Joyanta Deb Gupta" width="64" height="64"
           class="w-16 h-16 rounded-full mb-3 border-2 border-indigo-300 object-cover" loading="lazy" decoding="async"
-          onerror="this.onerror=null;this.src='./icons/icon-192.jpg';">
+          data-fallback="./icons/icon-192.jpg">
         <p class="font-handwriting text-3xl text-slate-800 dark:text-slate-100 mb-2">Joyanta Deb Gupta</p>
         <p class="text-base leading-relaxed mb-3 text-slate-600">
           Senior Electrical Design & Project Engineer with <span id="footer-years">10+</span> years of experience.
@@ -1172,16 +1173,16 @@
           <a href="https://www.linkedin.com/in/joyantadeb" target="_blank" rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
             class="footer-social-icon w-8 h-8 rounded-full flex items-center justify-center">
-            <i class="fab fa-linkedin-in text-sm"></i>
+            <i aria-hidden="true" class="fab fa-linkedin-in text-sm"></i>
           </a>
           <a href="https://www.facebook.com/Jadg.power" target="_blank" rel="noopener noreferrer"
             aria-label="Facebook Profile"
             class="footer-social-icon w-8 h-8 rounded-full flex items-center justify-center">
-            <i class="fab fa-facebook-f text-sm"></i>
+            <i aria-hidden="true" class="fab fa-facebook-f text-sm"></i>
           </a>
           <a href="#contact" aria-label="Contact Form"
             class="footer-social-icon w-8 h-8 rounded-full flex items-center justify-center">
-            <i class="fas fa-envelope text-sm"></i>
+            <i aria-hidden="true" class="fas fa-envelope text-sm"></i>
           </a>
         </div>
       </div>
@@ -1203,7 +1204,7 @@
 
       <div>
         <h3 class="footer-column-title text-lg">Services</h3>
-        <ul id="footer-services-list" class="space-y-1.5 text-sm">
+        <ul class="space-y-1.5 text-sm">
           <li><a href="#expertise" class="footer-link">Electrical System Design (MV/LV)</a></li>
           <li><a href="#expertise" class="footer-link">Substation Design (AIS & GIS)</a></li>
           <li><a href="#expertise" class="footer-link">Project Management</a></li>
@@ -1219,22 +1220,22 @@
         <h3 class="footer-column-title text-lg">Contact Info</h3>
         <ul class="space-y-2 text-sm">
           <li class="flex items-start">
-            <i class="fas fa-map-marker-alt w-3.5 mr-2 mt-0.5 text-indigo-500"></i>
-            <span class="text-slate-500">5 no, Shah Alibag, Maa Amena Tower, Mirpur-1, Dhaka-1216</span>
+            <i class="fas fa-map-marker-alt w-3.5 mr-2 mt-0.5 text-indigo-500" aria-hidden="true"></i>
+            <span class="text-slate-500">Mirpur-1, Dhaka-1216, Bangladesh</span>
           </li>
           <li class="flex items-center">
             <i class="fas fa-envelope w-3.5 mr-2 text-indigo-500" aria-hidden="true"></i>
-            <span class="footer-link obfuscated-email" data-user="jadg.power" data-domain="gmail.com">jadg.power [at] gmail [dot] com</span>
+            <span class="footer-link obfuscated-email" data-user="jadg.power" data-domain="gmail.com"><a href="mailto:jadg.power@gmail.com" class="footer-link">jadg.power@gmail.com</a></span>
           </li>
           <li class="flex items-center">
-            <i class="fas fa-phone w-3.5 mr-2 text-indigo-500"></i>
+            <i aria-hidden="true" class="fas fa-phone w-3.5 mr-2 text-indigo-500"></i>
             <a href="tel:+8801671801435" class="footer-link">+880 1671 801435</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="border-t border-slate-200 pt-4 text-center text-sm text-slate-500">
-      <p>&copy; <span id="currentYear"></span> Joyanta Deb Gupta. All Rights Reserved.</p>
+      <p>&copy; <span id="currentYear">2026</span> Joyanta Deb Gupta. All Rights Reserved.</p>
     </div>
   </footer>
 

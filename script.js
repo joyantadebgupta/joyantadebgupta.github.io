@@ -1,10 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
-    try {
+    const safe = (name, fn) => { try { fn(); } catch (e) { console.error(name + ' init error:', e); } };
+
+    safe('async-css', () => {
         // Activate async stylesheets (replaces inline onload handlers: keeps CSP free of 'unsafe-inline')
         document.querySelectorAll('link[data-async-css]').forEach(link => {
             link.media = 'all';
         });
+    });
 
+    safe('img-fallback', () => {
+        // CSP-safe image fallback (replaces inline onerror= which CSP blocks)
+        document.querySelectorAll('img[data-fallback]').forEach(img => {
+            img.addEventListener('error', () => {
+                const fb = img.getAttribute('data-fallback');
+                if (fb && !img.dataset.fbDone) {
+                    img.dataset.fbDone = '1';
+                    try {
+                        const cur = new URL(img.src, location.href).pathname;
+                        const tgt = new URL(fb, location.href).pathname;
+                        if (cur === tgt) return;
+                    } catch (e) { /* compare failed — still try fallback once */ }
+                    // Break circular nesco<->industrial chain: fall back to icon
+                    if (img.src.includes('project-nesco') && fb.includes('project-industrial')) {
+                        img.src = './icons/icon-192.jpg';
+                    } else if (img.src.includes('project-industrial') && fb.includes('project-nesco')) {
+                        img.src = './icons/icon-192.jpg';
+                    } else {
+                        img.src = fb;
+                    }
+                }
+            });
+        });
+    });
+
+    safe('mobile-menu', () => {
         // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -36,57 +65,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
+    });
 
-        // --- Active nav link on scroll ---
-        const sections = document.querySelectorAll('main section[id]');
-        const mainNavLinks = document.querySelectorAll('#main-nav a.nav-link');
-        const mobileNavLinks = document.querySelectorAll('#mobile-menu a.nav-link');
+    // --- Shared scroll state: single rAF loop for active-link + progress + back-to-top ---
+    const sections = document.querySelectorAll('main section[id]');
+    const mainNavLinks = document.querySelectorAll('#main-nav a.nav-link');
+    const mobileNavLinks = document.querySelectorAll('#mobile-menu a.nav-link');
+    const scrollProgress = document.getElementById('scroll-progress');
+    const backToTopButton = document.getElementById('back-to-top');
 
-        function updateActiveLink() {
-            let currentSectionId = '';
-            const headerOffset = 100;
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - headerOffset) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
+    function updateActiveLink() {
+        let currentSectionId = '';
+        const headerOffset = 100;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - headerOffset) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
 
-            mainNavLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-            mobileNavLinks.forEach(link => {
-                const isActive = link.getAttribute('href') === `#${currentSectionId}`;
-                link.classList.toggle('active', isActive);
-                link.classList.toggle('bg-indigo-100', isActive);
-                link.classList.toggle('dark:bg-slate-800', isActive);
-                link.classList.toggle('text-indigo-600', isActive);
-                link.classList.toggle('dark:text-indigo-400', isActive);
-                link.classList.toggle('font-semibold', isActive);
-                link.classList.toggle('text-slate-700', !isActive);
-                link.classList.toggle('dark:text-slate-200', !isActive);
-            });
+        mainNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+        mobileNavLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === `#${currentSectionId}`;
+            link.classList.toggle('active', isActive);
+        });
+    }
+
+    function updateProgress() {
+        if (!scrollProgress) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        scrollProgress.style.transform = `scaleX(${ratio})`;
+    }
+
+    function updateBackToTop() {
+        if (!backToTopButton) return;
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'pointer-events-none');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'pointer-events-none');
         }
+    }
+
+    safe('scroll', () => {
         updateActiveLink();
-        let scrollTicking = false;
+        updateProgress();
+        updateBackToTop();
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            if (scrollTicking) return;
-            scrollTicking = true;
+            if (ticking) return;
+            ticking = true;
             window.requestAnimationFrame(() => {
                 updateActiveLink();
-                scrollTicking = false;
+                updateProgress();
+                updateBackToTop();
+                ticking = false;
             });
         }, { passive: true });
+    });
 
+    safe('theme', () => {
         // --- Dark Mode Logic ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
         // Default: saved choice wins; first visit follows OS preference.
+        function syncPressed() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (themeToggleBtn) themeToggleBtn.setAttribute('aria-pressed', String(isDark));
+            const mobileBtn = document.getElementById('theme-toggle-mobile');
+            if (mobileBtn) mobileBtn.setAttribute('aria-pressed', String(isDark));
+        }
+
         function initTheme() {
             if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
             const savedTheme = localStorage.getItem('color-theme');
@@ -101,11 +157,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 themeToggleLightIcon.classList.add('hidden');
                 themeToggleDarkIcon.classList.remove('hidden');
             }
+            syncPressed();
         }
         initTheme();
 
+        function playSwap(btn) {
+            if (!btn) return;
+            btn.classList.remove('swap');
+            void btn.offsetWidth; // restart animation
+            btn.classList.add('swap');
+        }
+
         // Function to toggle dark mode
-        function toggleDarkMode() {
+        function toggleDarkMode(ev) {
             if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
             // toggle icons for desktop
             themeToggleDarkIcon.classList.toggle('hidden');
@@ -127,6 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.documentElement.classList.add('dark');
                 localStorage.setItem('color-theme', 'dark');
             }
+            syncPressed();
+            playSwap(themeToggleBtn);
+            playSwap(document.getElementById('theme-toggle-mobile'));
+            if (ev && ev.currentTarget) playSwap(ev.currentTarget);
         }
 
         // Desktop toggle
@@ -151,6 +219,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Follow OS changes only when user has no saved choice
+        if (window.matchMedia) {
+            try {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (localStorage.getItem('color-theme')) return;
+                    document.documentElement.classList.toggle('dark', e.matches);
+                });
+            } catch (e) { /* older browsers: ignore */ }
+        }
+    });
+
+    safe('reveal', () => {
         // --- Scroll-triggered animations ---
         const observer = new IntersectionObserver((entries, observerInstance) => {
             entries.forEach(entry => {
@@ -163,30 +243,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         animatedElements.forEach(el => observer.observe(el));
+    });
 
-
+    safe('experience', () => {
         // --- Experience Counter Animation ---
-        // Calculate years dynamically from career start (January 26, 2016)
-        const careerStart = new Date(2016, 0, 26); // January 26, 2016
+        // Career start: first appointment Jan 2016 (single source of truth)
+        const CAREER_START = new Date(2016, 0, 26);
         const now = new Date();
-        const yearsExperience = ((now - careerStart) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
+        const yearsExperience = ((now - CAREER_START) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
         const targetYears = parseFloat(yearsExperience);
 
         // Update all experience year elements
         const updateAllExperienceYears = () => {
-            // 1. Stats section (9.9+)
             const statsYears = document.getElementById('stats-years');
             if (statsYears) {
                 statsYears.textContent = targetYears + '+';
             }
 
-            // 2. About section (over X years)
             const aboutYears = document.getElementById('about-years');
             if (aboutYears) {
                 aboutYears.textContent = 'over ' + Math.floor(targetYears) + ' years';
             }
 
-            // 3. Footer section (X+)
             const footerYears = document.getElementById('footer-years');
             if (footerYears) {
                 footerYears.textContent = targetYears + '+';
@@ -239,12 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update all other experience year elements
         updateAllExperienceYears();
+    });
 
-        // --- Skills Data ---
-
-        // --- Skills and Footer Services are now statically rendered in HTML for SEO ---
-
-
+    safe('contact-form', () => {
         // --- Contact Form Submission ---
         const contactForm = document.getElementById('contact-form');
         const formFeedbackEl = document.getElementById('form-feedback');
@@ -258,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitButton.disabled = true;
                 submitButton.innerHTML = `<i class="fas fa-spinner fa-spin mr-2.5"></i> Sending...`;
                 formFeedbackEl.textContent = '';
-                formFeedbackEl.className = 'mt-3 text-xs font-medium h-4';
+                formFeedbackEl.className = 'text-sm font-medium min-h-[1.25rem]';
                 try {
                     const response = await fetch(contactForm.action, {
                         method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
@@ -295,34 +370,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     if (formFeedbackEl.textContent && !formFeedbackEl.textContent.includes("successfully")) {
                         formFeedbackEl.textContent = '';
-                        formFeedbackEl.className = 'mt-3 text-xs font-medium h-4';
+                        formFeedbackEl.className = 'text-sm font-medium min-h-[1.25rem]';
                     }
                 }, 7000);
             });
-        }
 
+            // Clear custom validity on input
+            contactForm.querySelectorAll('input, textarea').forEach(el => {
+                el.addEventListener('input', () => {
+                    el.removeAttribute('aria-invalid');
+                });
+                el.addEventListener('invalid', () => {
+                    el.setAttribute('aria-invalid', 'true');
+                });
+            });
+        }
+    });
+
+    safe('misc', () => {
         // --- Set current year in footer ---
         const currentYearEl = document.getElementById('currentYear');
         if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+    });
 
-        // --- Scroll progress hairline ---
-        const scrollProgress = document.getElementById('scroll-progress');
-        if (scrollProgress) {
-            let progressTicking = false;
-            const updateProgress = () => {
-                const max = document.documentElement.scrollHeight - window.innerHeight;
-                const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-                scrollProgress.style.transform = `scaleX(${ratio})`;
-                progressTicking = false;
-            };
-            window.addEventListener('scroll', () => {
-                if (progressTicking) return;
-                progressTicking = true;
-                window.requestAnimationFrame(updateProgress);
-            }, { passive: true });
-            updateProgress();
-        }
-
+    safe('exp-tabs', () => {
         // --- Experience role tabs ---
         const expTabs = Array.from(document.querySelectorAll('[data-exp-tabs] [role="tab"]'));
         const expPanels = Array.from(document.querySelectorAll('[data-exp-tabs] [role="tabpanel"]'));
@@ -364,30 +435,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
+    });
 
-        // --- Back to Top Button ---
-        const backToTopButton = document.getElementById('back-to-top');
-        if (backToTopButton) {
-            let backToTopTicking = false;
-            window.addEventListener('scroll', () => {
-                if (backToTopTicking) return;
-                backToTopTicking = true;
-                window.requestAnimationFrame(() => {
-                    if (window.scrollY > 300) {
-                        backToTopButton.classList.remove('opacity-0', 'pointer-events-none');
-                    } else {
-                        backToTopButton.classList.add('opacity-0', 'pointer-events-none');
-                    }
-                    backToTopTicking = false;
-                });
-            }, { passive: true });
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+    safe('back-to-top', () => {
+        // --- Back to Top Button (visibility handled in shared scroll loop) ---
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
             });
         }
+    });
 
+    safe('email', () => {
         // --- Email de-obfuscation (moved from inline script: keeps CSP free of 'unsafe-inline') ---
         document.querySelectorAll('.obfuscated-email').forEach(function (el) {
+            if (el.querySelector('a')) return; // already linked (noscript-friendly markup)
             const user = el.getAttribute('data-user') || 'jadg.power';
             const domain = el.getAttribute('data-domain') || 'gmail.com';
             const email = user + '@' + domain;
@@ -397,10 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.className = 'footer-link';
             el.replaceWith(link);
         });
-
-    } catch (error) {
-        console.error('Initialization error:', error);
-    }
+    });
 });
 
 // Service worker registration (moved from inline script; runs independently of DOMContentLoaded)

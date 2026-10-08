@@ -1,4 +1,4 @@
-const CACHE_NAME = 'joyanta-portfolio-v7';
+const CACHE_NAME = 'joyanta-portfolio-v8';
 const urlsToCache = [
     './',
     './index.html',
@@ -9,9 +9,14 @@ const urlsToCache = [
     './404.html',
     './humans.txt',
     './llms.txt',
+    './robots.txt',
+    './sitemap.xml',
+    './.well-known/security.txt',
     './joyanta-deb-gupta-cv.pdf',
     './icons/icon-192.jpg',
     './icons/icon-512.jpg',
+    './icons/icon-192-maskable.jpg',
+    './icons/icon-512-maskable.jpg',
     './icons/apple-touch-icon.jpg',
     './images/portrait.jpg',
     './images/portrait-400.jpg',
@@ -19,14 +24,23 @@ const urlsToCache = [
     './images/hero-bg-960.jpg',
     './images/og-cover.jpg',
     './images/project-nesco.jpg',
+    './images/project-nesco-640.jpg',
     './images/project-industrial.jpg',
+    './images/project-industrial-640.jpg',
     './images/project-desco.jpg',
+    './images/project-desco-640.jpg',
     './images/demo-compliance.jpg',
+    './images/demo-compliance-640.jpg',
     './images/demo-pgcb.jpg',
+    './images/demo-pgcb-640.jpg',
     './images/demo-cox.jpg',
+    './images/demo-cox-640.jpg',
     './images/demo-parliament.jpg',
+    './images/demo-parliament-640.jpg',
     './images/demo-solar.jpg',
-    './images/demo-tender.jpg'
+    './images/demo-solar-640.jpg',
+    './images/demo-tender.jpg',
+    './images/demo-tender-640.jpg'
 ];
 
 // Install event - cache same-origin files only (addAll is atomic, so keep it local).

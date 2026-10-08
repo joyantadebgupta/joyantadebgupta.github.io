@@ -40,17 +40,22 @@ Joyanta Deb Gupta is a Senior Electrical Design Engineer with 10+ years of exper
 - Factory Electrical Rectification (15+ Sites)
 
 ## Skills
-- Substation Design (AIS & GIS)
-- Solar Plant Design (Up to 100 MW)
+- Substation Design (AIS & GIS, 33/11kV to 230kV)
+- Solar Plant Design (Up to 100 MW; TBEA Sonagazi 220MW EPC bid)
 - VFD, PLC/HMI & SCADA Automation
-- IR Testing (HIOKI) & Diagnostics
+- IR Testing (HIOKI IR4056: 60-sec readings, min. 5 MΩ) & Diagnostics
 - Single Line Diagrams (SLD) & Electrical Layouts (ELD)
-- Load Flow & Short-Circuit Calculations
-- Earthing System & Lightning Protection
-- BOQ Preparation & Cost Estimation
-- Technical Documentation
+- Load Flow, Short-Circuit & Voltage-Drop Calculations
+- Earthing System, ESE Lightning Protection & DIALux
+- Fire Detection & Alarm (FDS) with sprinkler/hydrant coordination
+- BOQ Preparation, Cost Estimation & Vendor Pricing (ABB/CHINT/Schneider)
+- Tender & Proposal Engineering (DESCO, BPDB, PGCB, CEEC, CCCE, SinoSteel)
 - AutoCAD, PLC
 - Languages: Bengali (Native), English (Professional), Hindi (Conversational)
+
+## Selected Clients
+- Utilities: DESCO, NESCO, BPDB, PGCB, DPDC, BREB, CEEC, CCCE, CNTIC, Power China, SinoSteel, TBEA, GAS1
+- Factories: ACI, Epic Group, Ananta, World Ye, YKK, Youngone, Kenpark, Xin Chang, MAS, Regency, Matin Spinning
 
 ## Education
 - B.Sc. in Electrical & Electronics Engineering (Uttara University)

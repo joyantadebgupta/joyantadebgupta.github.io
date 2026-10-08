@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://joyantadebgupta.github.io/</loc>
-        <lastmod>2026-10-02</lastmod>
+        <lastmod>2026-10-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -22,22 +22,10 @@
             <image:loc>https://joyantadebgupta.github.io/images/project-desco.jpg</image:loc>
             <image:title>DESCO GIS Substations</image:title>
         </image:image>
-        <image:image>
-            <image:loc>https://joyantadebgupta.github.io/images/demo-pgcb.jpg</image:loc>
-            <image:title>PGCB Aricha Grid Substation</image:title>
-        </image:image>
-        <image:image>
-            <image:loc>https://joyantadebgupta.github.io/images/demo-solar.jpg</image:loc>
-            <image:title>Solar Plant Electrical Design</image:title>
-        </image:image>
-        <image:image>
-            <image:loc>https://joyantadebgupta.github.io/images/demo-tender.jpg</image:loc>
-            <image:title>Utility Tenders and Proposal Engineering</image:title>
-        </image:image>
     </url>
     <url>
         <loc>https://joyantadebgupta.github.io/joyanta-deb-gupta-cv.pdf</loc>
-        <lastmod>2026-10-02</lastmod>
+        <lastmod>2026-10-08</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>

@@ -16,14 +16,14 @@ Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha25
 # Prevent directory browsing
 Options -Indexes
 
-# Redirect www to non-www
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www\.joyantadebgupta\.github\.io [NC]
-RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
+# Redirect www to non-www (Apache self-host only; disabled on GitHub Pages)
+# RewriteEngine On
+# RewriteCond %{HTTP_HOST} ^www\. [NC]
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
+# Force HTTPS (Apache self-host only; GitHub Pages already forces HTTPS)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
 
 # Note: Include directive removed - GitHub Pages does not support .htaccess
 # Cache rules are handled by GitHub Pages automatically
@@ -31,8 +31,8 @@ RewriteRule ^(.*)$ https://joyantadebgupta.github.io/$1 [L,R=301]
 # Apache-only note: security.txt is served as a physical file at
 # /.well-known/security.txt (canonical) and /security.txt (convenience).
 
-# Error pages
-ErrorDocument 404 /404.html
+# Error pages (relative path works on both root and project Pages sites)
+ErrorDocument 404 ./404.html
 
 # NOTE: no trailing-slash forcing — GitHub Pages handles URLs natively and a
 # blanket extensionless-path rule can loop against extensionless site paths.

@@ -27,6 +27,14 @@ Professional portfolio website showcasing 10+ years of experience as a Senior El
   - Resource preloading
   - Service-worker offline caching
 
+## Image Credits
+
+Representative project photos (replace with your own site photos when available):
+- Factory switchgear: MdE, CC BY-SA 3.0, via Wikimedia Commons
+- Parliament GIS hall: Wdwd, CC BY-SA 3.0, via Wikimedia Commons
+- Industrial transformer: Yoshieslunchbox, CC BY-SA 4.0, via Wikimedia Commons
+- PGCB Aricha / Cox's Bazar AIS yards: CC0 public domain, via Wikimedia Commons
+
 ## Technologies
 
 - HTML5 with Microdata
