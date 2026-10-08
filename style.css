@@ -1665,6 +1665,42 @@ main>section:not(#home) {
 }
 
 /* ===== FOOTER ===== */
+/* Mobile-only: break the single vertical stack — brand + contact span full
+   width while Quick Links and Services sit side by side. Desktop untouched. */
+@media (max-width: 767px) {
+  footer div.grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1rem;
+  }
+
+  footer div.grid > div:first-child,
+  footer div.grid > div:last-child {
+    grid-column: span 2;
+  }
+
+  /* Brand lockup: avatar beside name, bio + socials below */
+  footer div.grid > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.8rem;
+  }
+
+  footer div.grid > div:first-child > img {
+    margin-bottom: 0;
+  }
+
+  footer div.grid > div:first-child > p.font-handwriting {
+    flex: 1 1 0;
+    margin-bottom: 0;
+    font-size: 1.65rem;
+  }
+
+  footer div.grid > div:first-child > p.text-base,
+  footer div.grid > div:first-child > div.flex {
+    flex: 1 1 100%;
+  }
+}
 /* Base footer element: the glass utility in markup carries the frosted look. */
 footer.glass {
   position: relative;
